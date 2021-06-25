@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "238218605747",
+    "project_id": "book-parking-ac259",
+    "storage_bucket": "book-parking-ac259.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238218605747:android:5d400f234014734cd96cc6",
+        "android_client_info": {
+          "package_name": "com.nero.bookparking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "238218605747-dag3u2mgfq5sj574c2c3qm395iabsmkv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnhPohioeecbZErGLx49MeNVloVv1bhnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "238218605747-dag3u2mgfq5sj574c2c3qm395iabsmkv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

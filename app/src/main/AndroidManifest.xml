@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.nero.bookparking">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -15,6 +16,9 @@
         android:theme="@style/Theme.BookParking">
         <activity
             android:name=".LocationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainScreen"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
