@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "238218605747",
+    "firebase_url": "https://book-parking-ac259-default-rtdb.firebaseio.com",
     "project_id": "book-parking-ac259",
     "storage_bucket": "book-parking-ac259.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "238218605747-7s86igotjichplg70uct8uc2fqkt387d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nero.bookparking",
+            "certificate_hash": "91c285b5d59457cd5305e3dd4ebc781d9de9dc55"
+          }
+        },
         {
           "client_id": "238218605747-dag3u2mgfq5sj574c2c3qm395iabsmkv.apps.googleusercontent.com",
           "client_type": 3
