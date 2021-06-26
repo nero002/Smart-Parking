@@ -34,5 +34,10 @@
 
     </style>
 
+    <style name="Style.NavBarView"
+        parent="Widget.Design.BottomNavigationView">
+        <item name="fontFamily">@font/product_sans_regular</item>
+    </style>
+
 
 </resources>

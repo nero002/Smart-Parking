@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nero.bookparking.R
 import com.nero.bookparking.dto.parkingDTO.MallItem
-import com.nero.bookparking.views.OnItemClickListener
+import com.nero.bookparking.views.interfaces.OnItemClickListener
 import com.ramotion.foldingcell.FoldingCell
 
 class MallItemViewHolder(itemView: View, private val itemClickListener: OnItemClickListener) :

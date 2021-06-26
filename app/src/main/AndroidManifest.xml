@@ -33,9 +33,6 @@
             android:name=".views.activities.LocationActivity"
             android:exported="true" />
         <activity
-            android:name=".MainScreen"
-            android:exported="true" />
-        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
