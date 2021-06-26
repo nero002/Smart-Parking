@@ -26,5 +26,11 @@
     <string name="_7_nhours">7+ \nhours</string>
     <string name="payment">Payment</string>
     <string name="period">Period</string>
+    <string name="total">Total</string>
+    <string name="rs20">Rs.20.00</string>
+    <string name="rs40">Rs.40.00</string>
+    <string name="rs100">Rs.100.00</string>
+    <string name="rs200">Rs.200.00</string>
+    <string name="rs_00_00">Rs.00.00</string>
 
 </resources>
