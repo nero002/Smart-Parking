@@ -24,7 +24,7 @@ import com.nero.bookparking.views.adapters.MallItemAdapter
 import java.util.*
 
 
-class LocationActivity : AppCompatActivity(),OnItemClickListener {
+class LocationActivity : AppCompatActivity(), OnItemClickListener {
 
     private val FINE_LOCATION_RO = 101
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
@@ -44,7 +44,7 @@ class LocationActivity : AppCompatActivity(),OnItemClickListener {
         checkForPermissions(Manifest.permission.ACCESS_FINE_LOCATION, "location", FINE_LOCATION_RO)
 
         buildData()
-        mallItemAdapter = MallItemAdapter(mallItemList,this)
+        mallItemAdapter = MallItemAdapter(mallItemList, this)
         binding.rvMallItems.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = mallItemAdapter
