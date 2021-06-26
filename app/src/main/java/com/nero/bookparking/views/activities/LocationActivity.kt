@@ -49,7 +49,11 @@ class LocationActivity : AppCompatActivity(), OnItemClickListener {
             layoutManager = LinearLayoutManager(context)
             adapter = mallItemAdapter
         }
+
+
     }
+
+
 
     private fun buildData() {
         mallItemList.add(

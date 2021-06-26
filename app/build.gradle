@@ -82,9 +82,8 @@ dependencies {
 
     implementation 'club.cred.android:synth:1.0.0'
 
-    implementation("me.nikhilchaudhari:composeNeumorphism:1.0.0-alpha")
-    //easy permissions
-    implementation 'com.vmadalin:easypermissions-ktx:1.0.0'
+
+
 
     //sdp
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
@@ -123,8 +122,7 @@ dependencies {
     // Easy UPI Payment library
     implementation 'dev.shreyaspatil.EasyUpiPayment:EasyUpiPayment:3.0.2'
 
-    //neumorphism
-    implementation 'club.cred.android:synth:1.0.0'
+
 
     // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:28.1.0')
@@ -133,5 +131,6 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-database-ktx'
 
+    implementation 'com.github.arimorty:floatingsearchview:2.1.1'
 
 }
