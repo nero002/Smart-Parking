@@ -120,8 +120,6 @@ dependencies {
     //folding cell
     implementation 'com.ramotion.foldingcell:folding-cell:1.2.3'
 
-    // Easy UPI Payment library
-    implementation 'dev.shreyaspatil.EasyUpiPayment:EasyUpiPayment:3.0.2'
 
     //neumorphism
     implementation 'club.cred.android:synth:1.0.0'
@@ -132,6 +130,9 @@ dependencies {
     // Declare the dependency for the Realtime Database library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-database-ktx'
+
+    //CircleImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
 
 }

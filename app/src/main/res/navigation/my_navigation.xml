@@ -3,14 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_navigation"
-    app:startDestination="@id/parkingBookingScreenFragment">
-
+    app:startDestination="@id/locationFragment">
 
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.nero.bookparking.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        android:id="@+id/locationFragment"
+        android:name="com.nero.bookparking.views.fragments.LocationFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_location" >
+        <action
+            android:id="@+id/action_locationFragment_to_slotBookingFragment"
+            app:destination="@id/slotBookingFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/visaPaymentFragment"
         android:name="com.nero.bookparking.ui.payment.VisaPaymentFragment"
@@ -18,10 +22,8 @@
     <fragment
         android:id="@+id/slotBookingFragment"
         android:name="com.nero.bookparking.ui.slotBooking.SlotBookingFragment"
-        android:label="fragment_slot_booking"
-        tools:layout="@layout/fragment_slot_booking" >
-
-
+        android:label="@string/payment"
+        tools:layout="@layout/fragment_slot_booking">
         <argument
             android:name="parking"
             app:argType="com.nero.bookparking.ui.parcalable.ArgsParkingToPayment" />

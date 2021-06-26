@@ -33,5 +33,9 @@
     <string name="rs200">Rs.200.00</string>
     <string name="rs_00_00">Rs.00.00</string>
     <string name="valet_parking">Valet Parking</string>
+    <string name="home">Home</string>
+    <string name="my_bookings">My Bookings</string>
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
 
 </resources>
