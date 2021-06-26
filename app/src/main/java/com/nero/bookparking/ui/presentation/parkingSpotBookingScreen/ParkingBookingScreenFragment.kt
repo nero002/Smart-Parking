@@ -30,9 +30,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.nero.bookparking.R
 import com.nero.bookparking.dto.parkingDTO.ParkingBoxDto
 import com.nero.bookparking.dto.parkingDTO.ParkingPillarDto
+import com.nero.bookparking.ui.parcalable.ArgsParkingToPayment
 import com.nero.bookparking.ui.theme.Ebony
 import com.nero.bookparking.ui.theme.EbonyClay
 import com.nero.bookparking.ui.theme.PaleSky
@@ -215,7 +217,17 @@ class ParkingBookingScreenFragment : Fragment() {
                                 .clip(RoundedCornerShape(17.dp))
                                 .background(Color.White)
                                 .clickable {
-                                    //Do stuff here after clicking
+                                    val action =
+                                        ParkingBookingScreenFragmentDirections
+                                            .actionParkingBookingScreenFragmentToSlotBookingFragment(
+                                                ArgsParkingToPayment(
+                                                    pillor = viewModel.currentSelectedPillar.value,
+                                                    parkingBox = viewModel.currentSelectede.value,
+                                                    building = "m1"
+
+                                                )
+                                            )
+                                    findNavController().navigate(action)
                                 },
                             contentAlignment = Alignment.Center
                         ) {
@@ -494,7 +506,7 @@ fun ParkingBoxRight(
             modifier = Modifier
                 .background(PaleSky)
                 .height(59.dp)
-                .width(0.5.dp)
+                .width(1.dp)
         )
         Column() {
             Divider(modifier = Modifier.width(90.dp), thickness = 0.5.dp, color = PaleSky)
@@ -588,7 +600,7 @@ fun ParkingBoxLeft(
                 Box(
                     modifier = Modifier
                         .height(59.dp)
-                        .width(.05.dp)
+                        .width(1.dp)
                         .background(PaleSky)
                 )
             }

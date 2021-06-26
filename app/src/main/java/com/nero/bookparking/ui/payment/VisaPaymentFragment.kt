@@ -6,13 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.navigation.NavController
+import com.nero.bookparking.R
+import com.nero.bookparking.ui.theme.Ebony
 import dagger.hilt.android.AndroidEntryPoint
 
 
-
-class PaymentFragment : Fragment() {
+class VisaPaymentFragment : Fragment() {
 
     companion object {
         public lateinit var navController: NavController
@@ -28,6 +33,8 @@ class PaymentFragment : Fragment() {
 
         return ComposeView(requireContext()).apply {
             setContent {
+                Box(modifier = Modifier.background(color = Ebony).fillMaxSize())
+
                 AddPaymentScreen()
             }
         }
