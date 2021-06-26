@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import com.nero.bookparking.MainActivity
 import com.nero.bookparking.R
 import com.nero.bookparking.dto.parkingDTO.ParkingBoxDto
 import com.nero.bookparking.dto.parkingDTO.ParkingPillarDto
@@ -236,7 +237,7 @@ class ParkingBookingScreenFragment : Fragment() {
                             contentAlignment = Alignment.Center
                         ) {
                             Image(
-                                painter = painterResource(id = R.drawable.dotsback),
+                                painter = painterResource(id = R.drawable.boxback),
                                 contentDescription = ""
                             )
                         }
@@ -251,11 +252,15 @@ class ParkingBookingScreenFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         databaseReference = viewModel.getParkingData("m_1")
+        val activity = activity as MainActivity
+        activity.hideToolBar()
     }
 
     override fun onPause() {
         super.onPause()
         databaseReference.database.removeEventListener(databaseReference.listener)
+        val activity = activity as MainActivity
+        activity.showToolBar()
     }
 
 }

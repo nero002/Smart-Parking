@@ -1,10 +1,18 @@
 package com.nero.bookparking.views.activities
 
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -18,15 +26,16 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.messaging.FirebaseMessaging
 import com.nero.bookparking.MainActivity
-import com.nero.bookparking.databinding.ActivityLoginBinding
+import com.nero.bookparking.databinding.ActivitySplashScreenBinding
 import com.nero.bookparking.helper.*
 import java.util.*
 
-class LoginActivity : AppCompatActivity() {
+class SplashScreenActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityLoginBinding
+    lateinit var binding: ActivitySplashScreenBinding
 
-    //googleAuth
+    val FINE_LOCATION_RO = 101
+
     lateinit var gso: GoogleSignInOptions
     lateinit var googleSignInClient: GoogleSignInClient
     val SIGN_IN_CODE = 10
@@ -34,20 +43,32 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         PreferenceHelper.getSharedPreferences(this)
-        initializeSignin()
 
-        mAuth = FirebaseAuth.getInstance()
+        checkForPermissions(
+            android.Manifest.permission.ACCESS_FINE_LOCATION,
+            "location",
+            FINE_LOCATION_RO
+        )
 
-        binding.apply {
-            ibMobile.setOnClickListener {
-                startActivity(Intent(this@LoginActivity, PhoneNumberSignInActivity::class.java))
+        Handler().postDelayed(Runnable {
+            when {
+                PreferenceHelper.getLoginBooleanFromPreference(USER_PHONE_LOGIN) -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                }
+                PreferenceHelper.getLoginBooleanFromPreference(KEY_LOGIN_WITH_OAUTH) -> {
+                    initializeSignin()
+                }
+                else -> {
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                }
             }
-        }
-
+        }, 3000)
     }
 
     private fun initializeSignin() {
@@ -58,11 +79,8 @@ class LoginActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
-
-        binding.ibGoogle.setOnClickListener {
-            val intent: Intent = googleSignInClient.signInIntent
-            startActivityForResult(intent, SIGN_IN_CODE)
-        }
+        val intent: Intent = googleSignInClient.signInIntent
+        startActivityForResult(intent, SIGN_IN_CODE)
     }
 
 
@@ -134,8 +152,8 @@ class LoginActivity : AppCompatActivity() {
                             Log.d("TAG", "onComplete: " + task.exception!!.message)
                         }
                     }
-                    Toast.makeText(this@LoginActivity, "Welcome Back ${account.displayName}", Toast.LENGTH_SHORT)
-                        .show()
+//                    Toast.makeText(this@SplashScreenActivity, "Welcome back ${account.displayName}", Toast.LENGTH_SHORT)
+//                        .show()
                     return
                 }
                 if (!snapshot.exists()) {
@@ -157,7 +175,7 @@ class LoginActivity : AppCompatActivity() {
                                 .addOnCompleteListener { it_inside ->
                                     if (it_inside.isSuccessful) {
                                         Toast.makeText(
-                                            this@LoginActivity,
+                                            this@SplashScreenActivity,
                                             "token saved",
                                             Toast.LENGTH_SHORT
                                         )
@@ -173,6 +191,72 @@ class LoginActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
+
+    }
+
+    //location permission
+    private fun checkForPermissions(permission: String, name: String, requestCode: Int) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            when {
+                ContextCompat.checkSelfPermission(
+                    applicationContext,
+                    permission
+                ) == PackageManager.PERMISSION_GRANTED -> {
+//                    Toast.makeText(
+//                        applicationContext,
+//                        "$name permission granted",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+                }
+                shouldShowRequestPermissionRationale(permission) -> showDialog(
+                    permission,
+                    name,
+                    requestCode
+                )
+                else -> ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
+            }
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        fun innerCheck(name: String) {
+            if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(applicationContext, "$name permission refused", Toast.LENGTH_SHORT)
+                    .show()
+                val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                val uri = Uri.fromParts("package", packageName, null)
+                intent.setData(uri)
+                startActivity(intent)
+            } else {
+//                Toast.makeText(applicationContext, "Location permission granted", Toast.LENGTH_SHORT)
+//                    .show()
+            }
+        }
+        when (requestCode) {
+            FINE_LOCATION_RO -> innerCheck("location")
+        }
+    }
+
+
+    private fun showDialog(permission: String, name: String, requestCode: Int) {
+        val builder = AlertDialog.Builder(this)
+        builder.apply {
+            setMessage("permission to access your $name is requested to use this app")
+            setTitle("permission requested")
+            setPositiveButton("OK") { dialog, which ->
+                ActivityCompat.requestPermissions(
+                    this@SplashScreenActivity,
+                    arrayOf(permission), requestCode
+                )
+            }
+        }
+        val dialog = builder.create()
+        dialog.show()
 
     }
 }
