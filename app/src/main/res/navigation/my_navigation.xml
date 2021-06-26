@@ -16,18 +16,37 @@
     </fragment>
 
     <fragment
-        android:id="@+id/paymentFragment2"
-        android:name="com.nero.bookparking.ui.payment.PaymentFragment"
+        android:id="@+id/visaPaymentFragment"
+        android:name="com.nero.bookparking.ui.payment.VisaPaymentFragment"
         android:label="PaymentFragment" />
     <fragment
         android:id="@+id/slotBookingFragment"
         android:name="com.nero.bookparking.ui.slotBooking.SlotBookingFragment"
         android:label="@string/payment"
         tools:layout="@layout/fragment_slot_booking" />
+        android:label="fragment_slot_booking"
+        tools:layout="@layout/fragment_slot_booking" >
+
+
+        <argument
+            android:name="parking"
+            app:argType="com.nero.bookparking.ui.parcalable.ArgsParkingToPayment" />
+        <action
+            android:id="@+id/action_slotBookingFragment_to_visaPaymentFragment"
+            app:destination="@id/visaPaymentFragment" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/parkingBookingScreenFragment"
         android:name="com.nero.bookparking.ui.presentation.parkingSpotBookingScreen.ParkingBookingScreenFragment"
         android:label="fragment_pakring_booking_screen"
-        tools:layout="@layout/fragment_pakring_booking_screen" />
+        tools:layout="@layout/fragment_pakring_booking_screen" >
+        <action
+            android:id="@+id/action_parkingBookingScreenFragment_to_slotBookingFragment"
+            app:destination="@id/slotBookingFragment" />
+        <action
+            android:id="@+id/action_parkingBookingScreenFragment_to_slotBookingFragment2"
+            app:destination="@id/slotBookingFragment" />
+    </fragment>
 </navigation>
