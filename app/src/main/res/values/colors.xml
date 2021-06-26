@@ -16,4 +16,6 @@
     <color name="email_green">#EEFBEA</color>
     <color name="phone_orange">#FF8F26</color>
     <color name="phone_bg">#FFF6ED</color>
+
+    <color name="app_red">#F43938</color>
 </resources>
