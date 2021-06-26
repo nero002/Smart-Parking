@@ -1,20 +1,16 @@
 package com.nero.bookparking.ui.slotBooking
 
-import android.opengl.Visibility
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
 import com.nero.bookparking.R
 import com.nero.bookparking.databinding.FragmentSlotBookingBinding
-import com.nero.bookparking.ui.parcalable.ArgsParkingToPayment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -52,7 +48,7 @@ class SlotBookingFragment : Fragment() {
                 cv34Hrs.setCardBackgroundColor(resources.getColor(R.color.white))
                 cv57Hrs.setCardBackgroundColor(resources.getColor(R.color.white))
                 cv7Hrs.setCardBackgroundColor(resources.getColor(R.color.white))
-                tvCost.text  = if (cbValetParking.isChecked)"Rs.100.00" else "Rs.20.00"
+                tvCost.text = if (cbValetParking.isChecked) "Rs.100.00" else "Rs.20.00"
                 tvHiddenText.visibility = View.GONE
 
             }
@@ -64,7 +60,7 @@ class SlotBookingFragment : Fragment() {
                 cv34Hrs.setCardBackgroundColor(resources.getColor(R.color.app_red))
                 cv57Hrs.setCardBackgroundColor(resources.getColor(R.color.white))
                 cv7Hrs.setCardBackgroundColor(resources.getColor(R.color.white))
-                tvCost.text  = if (cbValetParking.isChecked)"Rs.100.00" else "Rs.40.00"
+                tvCost.text = if (cbValetParking.isChecked) "Rs.100.00" else "Rs.40.00"
                 tvHiddenText.visibility = View.GONE
 
             }
@@ -77,7 +73,7 @@ class SlotBookingFragment : Fragment() {
                 cv34Hrs.setCardBackgroundColor(resources.getColor(R.color.white))
                 cv57Hrs.setCardBackgroundColor(resources.getColor(R.color.app_red))
                 cv7Hrs.setCardBackgroundColor(resources.getColor(R.color.white))
-                tvCost.text  = if (cbValetParking.isChecked)"Rs.150.00" else "Rs.100.00"
+                tvCost.text = if (cbValetParking.isChecked) "Rs.150.00" else "Rs.100.00"
                 tvHiddenText.visibility = View.GONE
 
             }
@@ -88,7 +84,7 @@ class SlotBookingFragment : Fragment() {
                 cv34Hrs.setCardBackgroundColor(resources.getColor(R.color.white))
                 cv57Hrs.setCardBackgroundColor(resources.getColor(R.color.white))
                 cv7Hrs.setCardBackgroundColor(resources.getColor(R.color.app_red))
-                tvCost.text  = if (cbValetParking.isChecked)"Rs.250.00" else "Rs.200.00"
+                tvCost.text = if (cbValetParking.isChecked) "Rs.250.00" else "Rs.200.00"
                 tvHiddenText.visibility = View.VISIBLE
 
             }
@@ -100,9 +96,9 @@ class SlotBookingFragment : Fragment() {
             ibNext.setOnClickListener {
                 viewModel.updateSlot(
                     buildingID = data.building,
-                    pillerID = data.parkingBox,
+                    pillerID = data.pillor,
                     boxID = data.parkingBox,
-                    userId = currentUser
+                    floorID = data.floor
                 )
             }
 

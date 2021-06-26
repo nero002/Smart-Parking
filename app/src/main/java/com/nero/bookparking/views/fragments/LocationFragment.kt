@@ -129,8 +129,13 @@ class LocationFragment : Fragment(), OnItemClickListener {
                 val addressList = geocoder.getFromLocation(
                     location.latitude, location.longitude, 1
                 )
-                Toast.makeText(context, addressList[0].locality.toString(), Toast.LENGTH_SHORT)
-                    .show()
+                try{
+                    Toast.makeText(context, addressList[0].locality.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                } catch (e:Exception){
+
+                }
+
             }
         }
     }
