@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.messaging.FirebaseMessaging
+import com.nero.bookparking.MainActivity
 import com.nero.bookparking.databinding.ActivityLoginBinding
 import com.nero.bookparking.helper.*
 import java.util.*
@@ -79,7 +80,7 @@ class LoginActivity : AppCompatActivity() {
                 val account = task.getResult(ApiException::class.java)
                 PreferenceHelper.writeBooleanToPreference(KEY_LOGIN_WITH_OAUTH, true)
                 updatePreference(account!!)
-                val intent = Intent(this, LocationActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 intent.putExtra("UserName", account.displayName)
                 intent.putExtra("UserEmail", account.email)
                 intent.putExtra("UserPhoto", account.photoUrl?.toString())

@@ -1,4 +1,4 @@
-package com.nero.bookparking.views.activities
+package com.nero.bookparking.views.fragments
 
 import android.Manifest
 import android.content.Intent
@@ -8,38 +8,46 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.nero.bookparking.R
-import com.nero.bookparking.databinding.ActivityLocationBinding
+import com.nero.bookparking.databinding.FragmentLocationBinding
 import com.nero.bookparking.dto.parkingDTO.MallItem
-import com.nero.bookparking.views.OnItemClickListener
 import com.nero.bookparking.views.adapters.MallItemAdapter
+import com.nero.bookparking.views.interfaces.OnItemClickListener
 import java.util.*
 
+class LocationFragment : Fragment(), OnItemClickListener {
 
-class LocationActivity : AppCompatActivity(), OnItemClickListener {
+    private var _binding: FragmentLocationBinding? = null
+    private val binding get() = _binding!!
 
     private val FINE_LOCATION_RO = 101
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
-    lateinit var binding: ActivityLocationBinding
-
     lateinit var mallItemAdapter: MallItemAdapter
     private var mallItemList = arrayListOf<MallItem>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityLocationBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentLocationBinding.inflate(inflater, container, false)
+        // Inflate the layout for this fragment
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context)
 
         checkForPermissions(Manifest.permission.ACCESS_FINE_LOCATION, "location", FINE_LOCATION_RO)
 
@@ -51,9 +59,9 @@ class LocationActivity : AppCompatActivity(), OnItemClickListener {
         }
 
 
+
+        return binding.root
     }
-
-
 
     private fun buildData() {
         mallItemList.add(
@@ -98,10 +106,12 @@ class LocationActivity : AppCompatActivity(), OnItemClickListener {
     private fun checkForPermissions(permission: String, name: String, requestCode: Int) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             when {
-                ContextCompat.checkSelfPermission(
-                    applicationContext,
-                    permission
-                ) == PackageManager.PERMISSION_GRANTED -> {
+                context?.let {
+                    ContextCompat.checkSelfPermission(
+                        it.applicationContext,
+                        permission
+                    )
+                } == PackageManager.PERMISSION_GRANTED -> {
                     getLocation()
                 }
                 shouldShowRequestPermissionRationale(permission) -> showDialog(
@@ -109,20 +119,28 @@ class LocationActivity : AppCompatActivity(), OnItemClickListener {
                     name,
                     requestCode
                 )
-                else -> ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
+                else -> ActivityCompat.requestPermissions(
+                    requireActivity().parent,
+                    arrayOf(permission),
+                    requestCode
+                )
             }
         }
     }
 
 
     private fun getLocation() {
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
+        if (context?.let {
+                ActivityCompat.checkSelfPermission(
+                    it.applicationContext,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                )
+            } != PackageManager.PERMISSION_GRANTED && context?.let {
+                ActivityCompat.checkSelfPermission(
+                    it.applicationContext,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                )
+            } != PackageManager.PERMISSION_GRANTED
         ) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -136,11 +154,12 @@ class LocationActivity : AppCompatActivity(), OnItemClickListener {
         fusedLocationProviderClient.lastLocation.addOnCompleteListener {
             val location = it.result
             if (location != null) {
-                val geocoder = Geocoder(this, Locale.getDefault())
+                val geocoder = Geocoder(context, Locale.getDefault())
                 val addressList = geocoder.getFromLocation(
                     location.latitude, location.longitude, 1
                 )
-                Toast.makeText(this, addressList[0].locality.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, addressList[0].locality.toString(), Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
@@ -153,10 +172,14 @@ class LocationActivity : AppCompatActivity(), OnItemClickListener {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         fun innerCheck(name: String) {
             if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(applicationContext, "$name permission refused", Toast.LENGTH_SHORT)
+                Toast.makeText(
+                    context?.applicationContext,
+                    "$name permission refused",
+                    Toast.LENGTH_SHORT
+                )
                     .show()
                 val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                val uri = Uri.fromParts("package", packageName, null)
+                val uri = Uri.fromParts("package", activity?.packageName, null)
                 intent.setData(uri)
                 startActivity(intent)
             } else {
@@ -170,23 +193,29 @@ class LocationActivity : AppCompatActivity(), OnItemClickListener {
 
 
     private fun showDialog(permission: String, name: String, requestCode: Int) {
-        val builder = AlertDialog.Builder(this)
-        builder.apply {
+        val builder = context?.let { AlertDialog.Builder(it.applicationContext) }
+        builder?.apply {
             setMessage("permission to access your $name is requested to use this app")
             setTitle("permission requested")
             setPositiveButton("OK") { dialog, which ->
                 ActivityCompat.requestPermissions(
-                    this@LocationActivity,
+                    requireActivity().parent,
                     arrayOf(permission), requestCode
                 )
             }
         }
-        val dialog = builder.create()
-        dialog.show()
+        val dialog = builder?.create()
+        dialog?.show()
 
     }
 
     override fun onItemClicked(mallItem: MallItem) {
-
+        findNavController().navigate(LocationFragmentDirections.actionLocationFragmentToParkingBookingScreenFragment())
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }

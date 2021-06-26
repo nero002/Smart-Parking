@@ -119,8 +119,6 @@ dependencies {
     //folding cell
     implementation 'com.ramotion.foldingcell:folding-cell:1.2.3'
 
-    // Easy UPI Payment library
-    implementation 'dev.shreyaspatil.EasyUpiPayment:EasyUpiPayment:3.0.2'
 
 
 
@@ -132,5 +130,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-database-ktx'
 
     implementation 'com.github.arimorty:floatingsearchview:2.1.1'
+    //CircleImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 
 }

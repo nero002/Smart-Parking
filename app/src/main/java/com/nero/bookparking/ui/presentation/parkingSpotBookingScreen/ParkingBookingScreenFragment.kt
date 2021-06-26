@@ -223,7 +223,7 @@ class ParkingBookingScreenFragment : Fragment() {
                                                 ArgsParkingToPayment(
                                                     pillor = viewModel.currentSelectedPillar.value,
                                                     parkingBox = viewModel.currentSelectede.value,
-                                                    building = "m1"
+                                                    building = "m_1"
 
                                                 )
                                             )

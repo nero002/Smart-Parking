@@ -1,4 +1,4 @@
-package com.nero.bookparking.views
+package com.nero.bookparking.views.interfaces
 
 import com.nero.bookparking.dto.parkingDTO.MallItem
 
