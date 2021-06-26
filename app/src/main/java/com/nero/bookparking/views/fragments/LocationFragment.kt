@@ -16,6 +16,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -207,7 +210,7 @@ class LocationFragment : Fragment(), OnItemClickListener {
     }
 
     override fun onItemClicked(mallItem: MallItem) {
-
+        findNavController().navigate(LocationFragmentDirections.actionLocationFragmentToParkingBookingScreenFragment())
     }
 
     override fun onDestroyView() {

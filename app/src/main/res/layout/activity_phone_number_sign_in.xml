@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_blue"
     tools:context=".views.activities.PhoneNumberSignInActivity">
 
     <TextView
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_75sdp"
         android:text="Book Your Parking"
-        android:textColor="@color/app_blue"
+        android:textColor="@color/white"
         android:textSize="@dimen/_24sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
         android:text="Sign in with mobile"
+        android:textColor="@color/white"
         android:textSize="@dimen/_16sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +68,7 @@
         android:paddingEnd="@dimen/_25sdp"
         android:text="Get OTP"
         android:textAllCaps="false"
-        android:textColor="@color/phone_orange"
+        android:textColor="@color/app_blue"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +99,7 @@
         android:paddingEnd="@dimen/_25sdp"
         android:text="Verify"
         android:textAllCaps="false"
-        android:textColor="@color/phone_orange"
+        android:textColor="@color/white"
         android:textStyle="bold"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
