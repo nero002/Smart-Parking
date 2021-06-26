@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_locationFragment_to_slotBookingFragment"
             app:destination="@id/slotBookingFragment" />
+        <action
+            android:id="@+id/action_locationFragment_to_parkingBookingScreenFragment"
+            app:destination="@id/parkingBookingScreenFragment" />
     </fragment>
 
     <fragment

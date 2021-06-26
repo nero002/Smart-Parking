@@ -1,6 +1,7 @@
 package com.nero.bookparking.views.viewHolders
 
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +28,8 @@ class MallItemViewHolder(itemView: View, private val itemClickListener: OnItemCl
 
     private lateinit var foldingCell: FoldingCell
 
+    private lateinit var mBtnBook: Button
+
     fun setData(mallItem: MallItem) {
         itemView.apply {
             mIvImage = findViewById(R.id.ivImage)
@@ -36,6 +39,7 @@ class MallItemViewHolder(itemView: View, private val itemClickListener: OnItemCl
             mTvDistance = findViewById(R.id.tvDistance)
             mTvSlotsAvailable = findViewById(R.id.tvSlotsAvailable)
             foldingCell = findViewById(R.id.folding_cell)
+            mBtnBook = findViewById(R.id.btnBook)
 
             Glide.with(mIvImage).load(mallItem.picture).into(mIvImage)
             mTvMallname.text = mallItem.name
@@ -46,6 +50,8 @@ class MallItemViewHolder(itemView: View, private val itemClickListener: OnItemCl
 
             foldingCell.setOnClickListener {
                 foldingCell.toggle(false)
+            }
+            mBtnBook.setOnClickListener {
                 itemClickListener.onItemClicked(mallItem)
             }
         }

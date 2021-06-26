@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
+import com.nero.bookparking.MainActivity
 import com.nero.bookparking.databinding.ActivityPhoneNumberSignInBinding
 import com.nero.bookparking.helper.PreferenceHelper
 import java.util.concurrent.TimeUnit
@@ -108,7 +109,7 @@ class PhoneNumberSignInActivity : AppCompatActivity() {
         mAuth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    val i = Intent(this, LocationActivity::class.java)
+                    val i = Intent(this, MainActivity::class.java)
                     startActivity(i)
                 } else {
                     Toast.makeText(this, "Failed", Toast.LENGTH_LONG).show()

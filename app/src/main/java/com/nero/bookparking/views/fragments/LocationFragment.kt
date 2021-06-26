@@ -8,8 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import android.widget.Toolbar
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -130,7 +136,7 @@ class LocationFragment : Fragment(), OnItemClickListener {
     }
 
     override fun onItemClicked(mallItem: MallItem) {
-
+        findNavController().navigate(LocationFragmentDirections.actionLocationFragmentToParkingBookingScreenFragment())
     }
 
     override fun onDestroyView() {
