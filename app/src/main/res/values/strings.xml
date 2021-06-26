@@ -18,4 +18,13 @@
     <string name="expiry_date">Expiry date</string>
     <string name="cvc">CVC</string>
     <string name="save">save</string>
+    <string name="don_apos_t_have_an_account_u_sign_up_u">Dont have an account? <u>Sign up</u></string>
+    <string name="time">Time</string>
+    <string name="_1_3_hrs">1 - 3 \nhours</string>
+    <string name="_3_4_hrs">3 - 4 \nhours</string>
+    <string name="_5_7_nhours">5 - 7\nhours</string>
+    <string name="_7_nhours">7+ \nhours</string>
+    <string name="payment">Payment</string>
+    <string name="period">Period</string>
+
 </resources>

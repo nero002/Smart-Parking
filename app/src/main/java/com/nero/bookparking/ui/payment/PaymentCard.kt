@@ -167,7 +167,7 @@ fun PaymentCard(
                             style = MaterialTheme.typography.caption,
                             color = Color.White,
                             modifier = Modifier
-                                .padding(horizontal = 16.dp)
+                                .padding(horizontal = 20.dp)
                                 .constrainAs(expiryLabel) {
                                     end.linkTo(parent.end)
                                     bottom.linkTo(expiry.top)

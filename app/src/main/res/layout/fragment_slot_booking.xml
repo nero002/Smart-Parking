@@ -1,10 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_blue"
     tools:context=".ui.slotBooking.SlotBookingFragment">
 
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/dots"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPeriod"
+        app:layout_constraintEnd_toStartOf="@+id/tvPayment"
+        app:layout_constraintTop_toTopOf="@+id/tvPayment" />
+
+
+    <TextView
+        android:id="@+id/tvPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/payment"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPeriod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:text="@string/period"
+        android:textAlignment="viewStart"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/tvPayment"
+        app:layout_constraintTop_toBottomOf="@+id/tvPayment" />
+
+
+    <TextView
+        android:id="@+id/tvTime_slot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/time"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPeriod" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv1_3hrs"
+        style="@style/card_view_slot"
+        app:layout_constraintStart_toStartOf="@+id/tvTime_slot"
+        app:layout_constraintTop_toBottomOf="@+id/tvTime_slot">
+
+
+        <TextView
+            style="@style/card_view_text"
+            android:text="@string/_1_3_hrs" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_3_4_hrs"
+        style="@style/card_view_slot"
+        app:layout_constraintEnd_toEndOf="@+id/cv1_3hrs"
+        app:layout_constraintStart_toStartOf="@+id/cv1_3hrs"
+        app:layout_constraintTop_toBottomOf="@+id/cv1_3hrs">
+
+
+        <TextView
+            style="@style/card_view_text"
+            android:text="@string/_3_4_hrs" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_5_7_hrs"
+        style="@style/card_view_slot"
+        app:layout_constraintEnd_toEndOf="@+id/cv_3_4_hrs"
+        app:layout_constraintStart_toStartOf="@+id/cv_3_4_hrs"
+        app:layout_constraintTop_toBottomOf="@+id/cv_3_4_hrs">
+
+
+        <TextView
+            style="@style/card_view_text"
+            android:text="@string/_5_7_nhours" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_7_hrs"
+        style="@style/card_view_slot"
+        app:layout_constraintEnd_toEndOf="@+id/cv_5_7_hrs"
+        app:layout_constraintStart_toStartOf="@+id/cv_5_7_hrs"
+        app:layout_constraintTop_toBottomOf="@+id/cv_5_7_hrs">
+
+
+        <TextView
+            style="@style/card_view_text"
+            android:text="@string/_7_nhours" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvPaymentMethod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/payment"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPeriod" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_debitCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="40dp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPaymentMethod">
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
