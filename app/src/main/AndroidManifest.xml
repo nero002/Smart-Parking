@@ -29,12 +29,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".views.activities.LocationActivity"
             android:exported="true" />
-        <activity
-            android:name=".MainScreen"
-            android:exported="true" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

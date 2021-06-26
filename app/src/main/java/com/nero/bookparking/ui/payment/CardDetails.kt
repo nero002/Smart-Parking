@@ -1,5 +1,7 @@
 package com.nero.bookparking.ui.payment
+
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Button
@@ -12,11 +14,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.nero.bookparking.R
+import com.nero.bookparking.ui.theme.Ebony
 
 @ExperimentalAnimationApi
 @Composable
+@Preview
 fun AddPaymentScreen() {
     var nameText by remember { mutableStateOf(TextFieldValue()) }
     var cardNumber by remember { mutableStateOf(TextFieldValue()) }
@@ -24,9 +29,13 @@ fun AddPaymentScreen() {
     var cvcNumber by remember { mutableStateOf(TextFieldValue()) }
 
 
-    Scaffold {
+    Scaffold(modifier = Modifier.background(Ebony)) {
 
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Ebony)
+        ) {
             PaymentCard(
                 nameText,
                 cardNumber,
@@ -36,6 +45,7 @@ fun AddPaymentScreen() {
             LazyColumn(
                 modifier = Modifier
                     .padding(16.dp)
+                    .background(Ebony)
                     .fillMaxWidth()
             ) {
                 item {
@@ -73,7 +83,7 @@ fun AddPaymentScreen() {
                             textFieldValue = expiryNumber,
                             label = stringResource(id = R.string.expiry_date),
                             keyboardType = KeyboardType.Number,
-                            onTextChanged = { expiryNumber = it },
+                            onTextChanged = { if (it.text.length <= 4) expiryNumber = it },
                             modifier = Modifier
                                 .weight(1f)
                                 .padding(end = 8.dp)
@@ -82,7 +92,7 @@ fun AddPaymentScreen() {
                             textFieldValue = cvcNumber,
                             label = stringResource(id = R.string.cvc),
                             keyboardType = KeyboardType.Number,
-                            onTextChanged = { cvcNumber = it },
+                            onTextChanged = { if (it.text.length < 4) cvcNumber = it },
                             modifier = Modifier
                                 .weight(1f)
                                 .padding(start = 8.dp)

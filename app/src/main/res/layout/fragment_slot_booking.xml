@@ -239,4 +239,18 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvCost"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvTotal" />
+
+
+    <CheckBox
+        android:id="@+id/cbValetParking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/white"
+        android:text="@string/valet_parking"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvTotal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_7_hrs" />
 </androidx.constraintlayout.widget.ConstraintLayout>
