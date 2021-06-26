@@ -23,11 +23,7 @@
         android:id="@+id/slotBookingFragment"
         android:name="com.nero.bookparking.ui.slotBooking.SlotBookingFragment"
         android:label="@string/payment"
-        tools:layout="@layout/fragment_slot_booking" />
-        android:label="fragment_slot_booking"
-        tools:layout="@layout/fragment_slot_booking" >
-
-
+        tools:layout="@layout/fragment_slot_booking">
         <argument
             android:name="parking"
             app:argType="com.nero.bookparking.ui.parcalable.ArgsParkingToPayment" />
