@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_navigation"
-    app:startDestination="@id/parkingBookingScreenFragment">
+    app:startDestination="@id/loginFragment">
 
 
     <fragment
@@ -43,4 +43,9 @@
             android:id="@+id/action_parkingBookingScreenFragment_to_slotBookingFragment2"
             app:destination="@id/slotBookingFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/myBookkingsFramgent"
+        android:name="com.nero.bookparking.ui.presentation.myBookingsScreen.MyBookkingsFramgent"
+        android:label="fragment_my_bookkings_framgent"
+        tools:layout="@layout/fragment_my_bookkings_framgent" />
 </navigation>

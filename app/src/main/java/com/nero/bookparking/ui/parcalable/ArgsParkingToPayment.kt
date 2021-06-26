@@ -5,5 +5,5 @@ import kotlinx.android.parcel.Parcelize
 
 
 @Parcelize
-data class ArgsParkingToPayment(val pillor: String, val parkingBox: String, val building: String) :
+data class ArgsParkingToPayment(val pillor: String, val parkingBox: String, val building: String,val floor:String) :
     Parcelable
