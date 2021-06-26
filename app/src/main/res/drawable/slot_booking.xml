@@ -4,10 +4,10 @@
 
     <solid android:color="@color/apple_grey" />
     <corners
-        android:bottomLeftRadius="@dimen/_45sdp"
-        android:bottomRightRadius="@dimen/_45sdp"
-        android:topRightRadius="@dimen/_45sdp"
-        android:topLeftRadius="@dimen/_45sdp" />
+        android:bottomLeftRadius="@dimen/_15sdp"
+        android:bottomRightRadius="@dimen/_15sdp"
+        android:topLeftRadius="@dimen/_15sdp"
+        android:topRightRadius="@dimen/_15sdp" />
 
 
 </shape>

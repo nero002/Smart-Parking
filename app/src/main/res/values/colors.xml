@@ -13,4 +13,6 @@
     <color name="facebook_blue">#ECF2FF</color>
     <color name="apple_grey">#F4F4F4</color>
     <color name="phone_blue">#EFFAFF</color>
+
+    <color name="app_red">#F43938</color>
 </resources>
