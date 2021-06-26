@@ -3,18 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Projects/BookParking/Book-Parking/app/src/main/res/drawable/apple_bg.xml" value="0.2703125" />
-        <entry key="..\:/Projects/BookParking/Book-Parking/app/src/main/res/drawable/book_bg.xml" value="0.2703125" />
-        <entry key="..\:/Projects/BookParking/Book-Parking/app/src/main/res/drawable/facebook_bg.xml" value="0.2703125" />
-        <entry key="..\:/Projects/BookParking/Book-Parking/app/src/main/res/drawable/google_bg.xml" value="0.2703125" />
-        <entry key="..\:/Projects/BookParking/Book-Parking/app/src/main/res/drawable/ic_apple.xml" value="0.2703125" />
-        <entry key="..\:/Projects/BookParking/Book-Parking/app/src/main/res/drawable/ic_fb.xml" value="0.2703125" />
-        <entry key="..\:/Projects/BookParking/Book-Parking/app/src/main/res/drawable/ic_iconfinder_2993685_brand_brands_google_logo_logos_icon.xml" value="0.2703125" />
-        <entry key="..\:/Projects/BookParking/Book-Parking/app/src/main/res/drawable/ic_phone.xml" value="0.2703125" />
-        <entry key="..\:/Projects/BookParking/Book-Parking/app/src/main/res/drawable/mobile_bg.xml" value="0.2703125" />
-        <entry key="..\:/Projects/BookParking/Book-Parking/app/src/main/res/layout/activity_location.xml" value="0.25416666666666665" />
-        <entry key="..\:/Projects/BookParking/Book-Parking/app/src/main/res/layout/activity_login.xml" value="0.25025641025641027" />
-        <entry key="..\:/Projects/BookParking/Book-Parking/app/src/main/res/layout/mall_item_layout.xml" value="0.25" />
+        <entry key="..\:/Android/BookParking/app/src/main/res/drawable/apple_bg.xml" value="0.3828125" />
+        <entry key="..\:/Android/BookParking/app/src/main/res/drawable/ic_failed.xml" value="0.3828125" />
+        <entry key="..\:/Android/BookParking/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
+        <entry key="..\:/Android/BookParking/app/src/main/res/drawable/rectangle_border_.xml" value="0.3828125" />
+        <entry key="..\:/Android/BookParking/app/src/main/res/drawable/slot_booking.xml" value="0.3828125" />
+        <entry key="..\:/Android/BookParking/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Android/BookParking/app/src/main/res/layout/activity_main_screen.xml" value="0.2957427536231884" />
+        <entry key="..\:/Android/BookParking/app/src/main/res/layout/fragment_login.xml" value="0.20923913043478262" />
+        <entry key="..\:/Android/BookParking/app/src/main/res/layout/fragment_payment.xml" value="0.35260416666666666" />
+        <entry key="..\:/Android/BookParking/app/src/main/res/layout/fragment_slot_booking.xml" value="0.33" />
+        <entry key="..\:/Android/BookParking/app/src/main/res/layout/top_slot_text.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
