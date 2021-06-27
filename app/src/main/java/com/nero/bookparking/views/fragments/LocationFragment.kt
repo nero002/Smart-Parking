@@ -56,8 +56,10 @@ class LocationFragment : Fragment(), OnItemClickListener {
 
 
 
+
         return binding.root
     }
+
 
     private fun buildData() {
         mallItemList.add(
@@ -156,11 +158,12 @@ class LocationFragment : Fragment(), OnItemClickListener {
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                searchView.clearFocus()
-                return true
+                return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+
+                mallItemAdapter.filter.filter(newText)
                 return false;
 
             }
