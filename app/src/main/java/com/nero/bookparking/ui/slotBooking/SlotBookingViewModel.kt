@@ -12,12 +12,19 @@ class SlotBookingViewModel @Inject constructor(val repository: SlotBookingDataRe
     ViewModel() {
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun updateSlot(buildingID: String, pillerID: String, boxID: String, floorID: String) {
+    fun updateSlot(
+        buildingID: String,
+        pillerID: String,
+        boxID: String,
+        floorID: String,
+        currentUserUid: String
+    ) {
         repository.updateData2(
             buildingID = buildingID,
             pillerID = pillerID,
             boxID = boxID,
             floorID = floorID,
+            currentUserUid = currentUserUid
         )
 
     }

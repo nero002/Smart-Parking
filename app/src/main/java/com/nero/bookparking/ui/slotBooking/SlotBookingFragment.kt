@@ -11,6 +11,8 @@ import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
 import com.nero.bookparking.R
 import com.nero.bookparking.databinding.FragmentSlotBookingBinding
+import com.nero.bookparking.helper.KEY_USER_GOOGLE_ID
+import com.nero.bookparking.helper.PreferenceHelper
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,7 +22,7 @@ class SlotBookingFragment : Fragment() {
     private val binding get() = _binding!!
     val viewModel by viewModels<SlotBookingViewModel>()
     val currentUser = FirebaseAuth.getInstance().currentUser?.uid ?: "u5"
-
+    private lateinit var u_id: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +42,7 @@ class SlotBookingFragment : Fragment() {
 
         val args by navArgs<SlotBookingFragmentArgs>()
         val data = args.parking
+        u_id = PreferenceHelper.getStringFromPreference(KEY_USER_GOOGLE_ID) ?: "u5"
 
         binding.apply {
 
@@ -98,8 +101,10 @@ class SlotBookingFragment : Fragment() {
                     buildingID = data.building,
                     pillerID = data.pillor,
                     boxID = data.parkingBox,
-                    floorID = data.floor
+                    floorID = data.floor, currentUserUid = u_id
                 )
+
+                findNavController().navigate(SlotBookingFragmentDirections.actionSlotBookingFragmentToMyBookkingsFramgent())
             }
 
         }

@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -22,14 +21,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.nero.bookparking.R
+import com.nero.bookparking.helper.KEY_USER_GOOGLE_ID
+import com.nero.bookparking.helper.PreferenceHelper
 import com.nero.bookparking.repository.listenerAndDatabaseModel.ListenerAndDatabaseReference
 import com.nero.bookparking.ui.theme.TicketShapeTopRightBottomRight
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,43 +42,28 @@ class MyBookkingsFramgent : Fragment() {
 
     val viewModel by viewModels<MyBookingViewModel>()
     lateinit var databaseReference: ListenerAndDatabaseReference
+    lateinit var u_id: String
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        activity?.let { PreferenceHelper.getSharedPreferences(it) }
+
+        u_id = PreferenceHelper.getStringFromPreference(KEY_USER_GOOGLE_ID) ?: "u5"
         // Inflate the layout for this fragment
         return ComposeView(requireContext()).apply {
+
+
             setContent {
+
 
                 val listOfBooking = viewModel.allBooksings.value
 
                 LazyColumn {
 
-
-                    item {
-                        Column {
-                            Spacer(modifier = Modifier.size(37.dp))
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Spacer(modifier = Modifier.size(25.dp))
-                                Image(
-                                    painter = painterResource(id = R.drawable.ic_baseline_arrow_back_24),
-                                    contentDescription = ""
-                                )
-                                Spacer(modifier = Modifier.size(20.dp))
-                                Text(
-                                    text = "My Booking",
-                                    fontSize = 24.sp,
-                                    color = Color(0xFF03292C)
-                                )
-
-                            }
-                            Spacer(modifier = Modifier.size(30.dp))
-                        }
-                    }
 
                     items(listOfBooking.size) { index ->
                         val data = listOfBooking[index]
@@ -112,8 +96,10 @@ class MyBookkingsFramgent : Fragment() {
                                 },
                                 index = index,
                                 checkOutOnClick = {
-                                    viewModel.checkOut(it)
-                                }
+                                    if (id != null) {
+                                        viewModel.checkOut(it, u_id)
+                                    }
+                                }, isCheckOut = data.checkedOut ?: true
                             )
                         }
                         Spacer(modifier = Modifier.size(15.dp))
@@ -125,7 +111,7 @@ class MyBookkingsFramgent : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        databaseReference = viewModel.getAllBooking()
+        databaseReference = viewModel.getAllBooking(u_id)
     }
 
     override fun onPause() {
@@ -147,6 +133,7 @@ fun Ticket(
     showCheckOut: Boolean,
     onClick: (Int) -> Unit,
     index: Int,
+    isCheckOut: Boolean,
     checkOutOnClick: (Int) -> Unit
 ) {
 
@@ -159,7 +146,7 @@ fun Ticket(
                     modifier = Modifier
                         .height(157.dp)
                         .width(273.dp)
-                        .background(Color(0xFF306FFE))
+                        .background(if (isCheckOut) Color(0xFFB4B4B4) else Color(0xFF306FFE))
                         .clip(
                             shape = RoundedCornerShape(topStart = 12.dp, bottomStart = 12.dp)
                         )
@@ -179,7 +166,7 @@ fun Ticket(
                                     .padding(20.dp), verticalArrangement = Arrangement.SpaceBetween
                             ) {
                                 Text(text = "Mall 1", fontSize = 12.sp, color = Color.White)
-                                HeadingAndContent("time", time)
+                                HeadingAndContent("Time", time)
                                 Row() {
                                     HeadingAndContent(heading = "Spot", content = spot)
                                     Spacer(modifier = Modifier.size(25.dp))
@@ -295,21 +282,21 @@ fun DateSHow(
 }
 
 
-@Composable
-@Preview
-fun Test() {
-    Ticket(
-        time = "sfd",
-        spot = "sfd",
-        timeLeft = "sfd",
-        day = "sfd",
-        month = "sfd",
-        year = "sfd",
-        showCheckOut = false,
-
-        {},
-        1,
-        {}
-    )
-
-}
+//@Composable
+//@Preview
+//fun Test() {
+//    Ticket(
+//        time = "sfd",
+//        spot = "sfd",
+//        timeLeft = "sfd",
+//        day = "sfd",
+//        month = "sfd",
+//        year = "sfd",
+//        showCheckOut = false,
+//
+//        {},
+//        1,
+//        {}, {}
+//    )
+//
+//}
