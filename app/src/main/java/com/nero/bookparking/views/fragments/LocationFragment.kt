@@ -1,13 +1,9 @@
 package com.nero.bookparking.views.fragments
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +12,6 @@ import android.widget.Toolbar
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -51,7 +46,7 @@ class LocationFragment : Fragment(), OnItemClickListener {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context)
 
-        checkForPermissions(Manifest.permission.ACCESS_FINE_LOCATION, "location", FINE_LOCATION_RO)
+        getLocation()
 
         buildData()
         mallItemAdapter = MallItemAdapter(mallItemList, this)
@@ -105,32 +100,6 @@ class LocationFragment : Fragment(), OnItemClickListener {
         )
     }
 
-    private fun checkForPermissions(permission: String, name: String, requestCode: Int) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            when {
-                context?.let {
-                    ContextCompat.checkSelfPermission(
-                        it.applicationContext,
-                        permission
-                    )
-                } == PackageManager.PERMISSION_GRANTED -> {
-                    getLocation()
-                }
-                shouldShowRequestPermissionRationale(permission) -> showDialog(
-                    permission,
-                    name,
-                    requestCode
-                )
-                else -> ActivityCompat.requestPermissions(
-                    requireActivity().parent,
-                    arrayOf(permission),
-                    requestCode
-                )
-            }
-        }
-    }
-
-
     private fun getLocation() {
         if (context?.let {
                 ActivityCompat.checkSelfPermission(
@@ -160,55 +129,15 @@ class LocationFragment : Fragment(), OnItemClickListener {
                 val addressList = geocoder.getFromLocation(
                     location.latitude, location.longitude, 1
                 )
-                Toast.makeText(context, addressList[0].locality.toString(), Toast.LENGTH_SHORT)
-                    .show()
+                try{
+                    Toast.makeText(context, addressList[0].locality.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                } catch (e:Exception){
+
+                }
+
             }
         }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        fun innerCheck(name: String) {
-            if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(
-                    context?.applicationContext,
-                    "$name permission refused",
-                    Toast.LENGTH_SHORT
-                )
-                    .show()
-                val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                val uri = Uri.fromParts("package", activity?.packageName, null)
-                intent.setData(uri)
-                startActivity(intent)
-            } else {
-                getLocation()
-            }
-        }
-        when (requestCode) {
-            FINE_LOCATION_RO -> innerCheck("location")
-        }
-    }
-
-
-    private fun showDialog(permission: String, name: String, requestCode: Int) {
-        val builder = context?.let { AlertDialog.Builder(it.applicationContext) }
-        builder?.apply {
-            setMessage("permission to access your $name is requested to use this app")
-            setTitle("permission requested")
-            setPositiveButton("OK") { dialog, which ->
-                ActivityCompat.requestPermissions(
-                    requireActivity().parent,
-                    arrayOf(permission), requestCode
-                )
-            }
-        }
-        val dialog = builder?.create()
-        dialog?.show()
-
     }
 
     override fun onItemClicked(mallItem: MallItem) {

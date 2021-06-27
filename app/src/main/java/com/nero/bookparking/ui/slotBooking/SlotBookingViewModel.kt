@@ -1,7 +1,8 @@
 package com.nero.bookparking.ui.slotBooking
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
-import com.nero.bookparking.repository.ParkingDataRepository
 import com.nero.bookparking.repository.SlotBookingDataRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -10,12 +11,13 @@ import javax.inject.Inject
 class SlotBookingViewModel @Inject constructor(val repository: SlotBookingDataRepository) :
     ViewModel() {
 
-    fun updateSlot(buildingID: String, pillerID: String, boxID: String, userId: String = "u5") {
-        repository.updateData(
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun updateSlot(buildingID: String, pillerID: String, boxID: String, floorID: String) {
+        repository.updateData2(
             buildingID = buildingID,
             pillerID = pillerID,
             boxID = boxID,
-            userId = userId
+            floorID = floorID,
         )
 
     }
