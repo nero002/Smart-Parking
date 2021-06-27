@@ -40,6 +40,7 @@ class MallItemViewHolder(itemView: View, private val itemClickListener: OnItemCl
             mTvSlotsAvailable = findViewById(R.id.tvSlotsAvailable)
             foldingCell = findViewById(R.id.folding_cell)
             mBtnBook = findViewById(R.id.btnBook)
+            val mBtnDirections: Button = findViewById(R.id.btnDirections)
 
             Glide.with(mIvImage).load(mallItem.picture).into(mIvImage)
             mTvMallname.text = mallItem.name
@@ -53,6 +54,9 @@ class MallItemViewHolder(itemView: View, private val itemClickListener: OnItemCl
             }
             mBtnBook.setOnClickListener {
                 itemClickListener.onItemClicked(mallItem)
+            }
+            mBtnDirections.setOnClickListener {
+                itemClickListener.onDirectionsClicked()
             }
         }
 

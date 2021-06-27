@@ -64,6 +64,9 @@ class MyBookkingsFramgent : Fragment() {
 
                 LazyColumn {
 
+                    item {
+                        Spacer(modifier = Modifier.size(25.dp))
+                    }
 
                     items(listOfBooking.size) { index ->
                         val data = listOfBooking[index]

@@ -13,7 +13,10 @@ import com.nero.bookparking.R
 import com.nero.bookparking.databinding.FragmentSlotBookingBinding
 import com.nero.bookparking.helper.KEY_USER_GOOGLE_ID
 import com.nero.bookparking.helper.PreferenceHelper
+import com.nero.bookparking.ui.parcalable.ArgsPaymentToConfirmation
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
 class SlotBookingFragment : Fragment() {
@@ -24,6 +27,7 @@ class SlotBookingFragment : Fragment() {
     val currentUser = FirebaseAuth.getInstance().currentUser?.uid ?: "u5"
     private lateinit var u_id: String
 
+    private var hoursToAdd: Long = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -53,7 +57,7 @@ class SlotBookingFragment : Fragment() {
                 cv7Hrs.setCardBackgroundColor(resources.getColor(R.color.white))
                 tvCost.text = if (cbValetParking.isChecked) "Rs.100.00" else "Rs.20.00"
                 tvHiddenText.visibility = View.GONE
-
+                hoursToAdd = 3
             }
 
             cv34Hrs.setOnClickListener {
@@ -65,7 +69,7 @@ class SlotBookingFragment : Fragment() {
                 cv7Hrs.setCardBackgroundColor(resources.getColor(R.color.white))
                 tvCost.text = if (cbValetParking.isChecked) "Rs.100.00" else "Rs.40.00"
                 tvHiddenText.visibility = View.GONE
-
+                hoursToAdd = 4
             }
 
 
@@ -78,7 +82,7 @@ class SlotBookingFragment : Fragment() {
                 cv7Hrs.setCardBackgroundColor(resources.getColor(R.color.white))
                 tvCost.text = if (cbValetParking.isChecked) "Rs.150.00" else "Rs.100.00"
                 tvHiddenText.visibility = View.GONE
-
+                hoursToAdd = 7
             }
             cv7Hrs.setOnClickListener {
 
@@ -89,7 +93,7 @@ class SlotBookingFragment : Fragment() {
                 cv7Hrs.setCardBackgroundColor(resources.getColor(R.color.app_red))
                 tvCost.text = if (cbValetParking.isChecked) "Rs.250.00" else "Rs.200.00"
                 tvHiddenText.visibility = View.VISIBLE
-
+                hoursToAdd = 7
             }
 
             cvVisaCardPayment.setOnClickListener {
@@ -101,10 +105,23 @@ class SlotBookingFragment : Fragment() {
                     buildingID = data.building,
                     pillerID = data.pillor,
                     boxID = data.parkingBox,
-                    floorID = data.floor, currentUserUid = u_id
+                    floorID = data.floor, currentUserUid = u_id,
+                    hoursLeft = hoursToAdd
                 )
 
-                findNavController().navigate(SlotBookingFragmentDirections.actionSlotBookingFragmentToMyBookkingsFramgent())
+                val time = Calendar.getInstance().timeInMillis
+
+
+                val hourValue: Long = TimeUnit.HOURS.toMillis(hoursToAdd)
+                val toTime: Long = time + hourValue
+
+                val details = ArgsPaymentToConfirmation(data.floor, time, toTime, data.parkingBox)
+
+                findNavController().navigate(
+                    SlotBookingFragmentDirections.actionSlotBookingFragmentToPaymentConfirmationFragment(
+                        details
+                    )
+                )
             }
 
         }
