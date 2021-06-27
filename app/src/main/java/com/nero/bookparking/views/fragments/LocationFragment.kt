@@ -8,14 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import android.widget.Toolbar
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -25,6 +20,8 @@ import com.nero.bookparking.dto.parkingDTO.MallItem
 import com.nero.bookparking.views.adapters.MallItemAdapter
 import com.nero.bookparking.views.interfaces.OnItemClickListener
 import java.util.*
+import android.content.Intent
+import android.net.Uri
 
 class LocationFragment : Fragment(), OnItemClickListener {
 
@@ -137,6 +134,17 @@ class LocationFragment : Fragment(), OnItemClickListener {
 
     override fun onItemClicked(mallItem: MallItem) {
         findNavController().navigate(LocationFragmentDirections.actionLocationFragmentToParkingBookingScreenFragment())
+    }
+
+    override fun onDirectionsClicked() {
+//        val gmmIntentUri: Uri = Uri.parse("google.streetview:cbll=17.493328112421448, 78.3934185687929")
+        val gmmIntentUri = Uri.parse("geo:0,0?q=" + Uri.encode("Manjeera Trinity Mall"))
+
+        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+        mapIntent.setPackage("com.google.android.apps.maps")
+        if (activity?.let { mapIntent.resolveActivity(it.packageManager) } != null) {
+            startActivity(mapIntent)
+        }
     }
 
     override fun onDestroyView() {

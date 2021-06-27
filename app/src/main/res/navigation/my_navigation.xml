@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_locationFragment_to_parkingBookingScreenFragment"
             app:destination="@id/parkingBookingScreenFragment" />
+        <action
+            android:id="@+id/action_locationFragment_to_paymentConfirmationFragment"
+            app:destination="@id/paymentConfirmationFragment" />
     </fragment>
 
     <fragment
@@ -48,4 +51,9 @@
             android:id="@+id/action_parkingBookingScreenFragment_to_slotBookingFragment2"
             app:destination="@id/slotBookingFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/paymentConfirmationFragment"
+        android:name="com.nero.bookparking.views.fragments.PaymentConfirmationFragment"
+        android:label="Payment Confirmation"
+        tools:layout="@layout/fragment_payment_confirmation" />
 </navigation>

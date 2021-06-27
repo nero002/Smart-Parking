@@ -6,4 +6,6 @@ interface OnItemClickListener {
 
     fun onItemClicked(mallItem: MallItem)
 
+    fun onDirectionsClicked()
+
 }

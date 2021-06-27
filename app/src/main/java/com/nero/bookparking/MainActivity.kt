@@ -101,6 +101,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .navigate(R.id.locationFragment, null, navOptions)
             }
             R.id.nav_my_bookings -> {
+                if (isValidDestination(R.id.paymentConfirmationFragment)) {
+                    Navigation.findNavController(this, R.id.fragmentContainerView2)
+                        .navigate(R.id.paymentConfirmationFragment)
+                }
 
             }
             R.id.nav_payment -> {
