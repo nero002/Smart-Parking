@@ -17,14 +17,17 @@ class SlotBookingViewModel @Inject constructor(val repository: SlotBookingDataRe
         pillerID: String,
         boxID: String,
         floorID: String,
-        currentUserUid: String
+        currentUserUid: String,
+        hoursLeft:Long
     ) {
         repository.updateData2(
             buildingID = buildingID,
             pillerID = pillerID,
             boxID = boxID,
             floorID = floorID,
-            currentUserUid = currentUserUid
+            currentUserUid = currentUserUid,
+            hoursToAdd = hoursLeft
+
         )
 
     }
