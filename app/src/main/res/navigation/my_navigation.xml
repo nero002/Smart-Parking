@@ -21,7 +21,11 @@
     <fragment
         android:id="@+id/visaPaymentFragment"
         android:name="com.nero.bookparking.ui.payment.VisaPaymentFragment"
-        android:label="PaymentFragment" />
+        android:label="PaymentFragment" >
+        <action
+            android:id="@+id/action_visaPaymentFragment_to_myBookkingsFramgent"
+            app:destination="@id/nav_my_bookings" />
+    </fragment>
     <fragment
         android:id="@+id/slotBookingFragment"
         android:name="com.nero.bookparking.ui.slotBooking.SlotBookingFragment"
@@ -33,6 +37,9 @@
         <action
             android:id="@+id/action_slotBookingFragment_to_visaPaymentFragment"
             app:destination="@id/visaPaymentFragment" />
+        <action
+            android:id="@+id/action_slotBookingFragment_to_myBookkingsFramgent"
+            app:destination="@id/nav_my_bookings" />
     </fragment>
 
 
@@ -48,9 +55,12 @@
             android:id="@+id/action_parkingBookingScreenFragment_to_slotBookingFragment2"
             app:destination="@id/slotBookingFragment" />
     </fragment>
+
     <fragment
-        android:id="@+id/myBookkingsFramgent"
+        android:id="@+id/nav_my_bookings"
         android:name="com.nero.bookparking.ui.presentation.myBookingsScreen.MyBookkingsFramgent"
-        android:label="fragment_my_bookkings_framgent"
-        tools:layout="@layout/fragment_my_bookkings_framgent" />
+        android:label="My Booking"
+        tools:layout="@layout/fragment_my_bookkings_framgent" >
+
+    </fragment>
 </navigation>

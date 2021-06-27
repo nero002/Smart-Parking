@@ -35,6 +35,8 @@ import com.nero.bookparking.MainActivity
 import com.nero.bookparking.R
 import com.nero.bookparking.dto.parkingDTO.ParkingBoxDto
 import com.nero.bookparking.dto.parkingDTO.ParkingPillarDto
+import com.nero.bookparking.helper.KEY_USER_GOOGLE_ID
+import com.nero.bookparking.helper.PreferenceHelper
 import com.nero.bookparking.repository.listenerAndDatabaseModel.ListenerAndDatabaseReference
 import com.nero.bookparking.ui.parcalable.ArgsParkingToPayment
 import com.nero.bookparking.ui.theme.Ebony
@@ -50,6 +52,8 @@ class ParkingBookingScreenFragment : Fragment() {
     private val viewModel by viewModels<BookingScreenViewModel>()
     private lateinit var databaseReference: ListenerAndDatabaseReference
 
+    private lateinit var u_id: String
+
     @ExperimentalFoundationApi
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,6 +61,9 @@ class ParkingBookingScreenFragment : Fragment() {
     ): View? {
 
         return ComposeView(requireContext()).apply {
+
+            u_id = PreferenceHelper.getStringFromPreference(KEY_USER_GOOGLE_ID)?:"u5"
+
             setContent {
 
                 val listOfPillars =
@@ -163,7 +170,7 @@ class ParkingBookingScreenFragment : Fragment() {
                                                         pillarName = listOfPillars[index].id,
                                                         listOfParkingBoxes = listOfPillars[index].listOfParkingBoxes,
                                                         currentSelectedId = viewModel.currentSelectede.value,
-                                                        currentUserUid = "u5",
+                                                        currentUserUid = u_id,
                                                         onClick = { slectedId, pillarId ->
                                                             viewModel.currentSelectede.value =
                                                                 slectedId
@@ -314,7 +321,7 @@ fun GridOfPillars(
     onClick: (String, String) -> Unit
 ) {
     var offsetX by remember { mutableStateOf(0f) }
-    var offsetY by remember { mutableStateOf(0f) }
+    val offsetY by remember { mutableStateOf(0f) }
 
     Box(modifier = Modifier
         .offset { IntOffset(offsetX.roundToInt(), offsetY.roundToInt()) }

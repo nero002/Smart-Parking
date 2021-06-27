@@ -84,6 +84,7 @@ class LoginActivity : AppCompatActivity() {
                 intent.putExtra("UserName", account.displayName)
                 intent.putExtra("UserEmail", account.email)
                 intent.putExtra("UserPhoto", account.photoUrl?.toString())
+                intent.putExtra("uid", account.id)
 //                Toast.makeText(this, "Welcome ${account.displayName}", Toast.LENGTH_SHORT)
 //                    .show()
                 saveUser(account)
@@ -134,7 +135,11 @@ class LoginActivity : AppCompatActivity() {
                             Log.d("TAG", "onComplete: " + task.exception!!.message)
                         }
                     }
-                    Toast.makeText(this@LoginActivity, "Welcome Back ${account.displayName}", Toast.LENGTH_SHORT)
+                    Toast.makeText(
+                        this@LoginActivity,
+                        "Welcome Back ${account.displayName}",
+                        Toast.LENGTH_SHORT
+                    )
                         .show()
                     return
                 }

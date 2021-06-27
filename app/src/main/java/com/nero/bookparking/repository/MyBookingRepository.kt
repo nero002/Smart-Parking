@@ -1,5 +1,6 @@
 package com.nero.bookparking.repository
 
+import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -8,11 +9,13 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.nero.bookparking.dto.MyBookingDto
+import com.nero.bookparking.helper.PreferenceHelper
 import com.nero.bookparking.repository.listenerAndDatabaseModel.ListenerAndDatabaseReference
 
 class MyBookingRepository {
 
-    private val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid ?: "u5"
+//    private val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid ?: "u5"
+
 
     private val database = Firebase.database.getReference("users")
     private val parkingDatabaseRef = Firebase.database.getReference("parking")
@@ -20,7 +23,8 @@ class MyBookingRepository {
 
     val listOfMyBooking = mutableStateOf<List<MyBookingDto>>(arrayListOf())
 
-    fun getAllMyBooking(): ListenerAndDatabaseReference {
+    fun getAllMyBooking(currentUserUid: String): ListenerAndDatabaseReference {
+        Log.d("TAg", currentUserUid)
         val myBookingDatabaseRef = database.child(currentUserUid).child("myBooking")
         val listener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -40,7 +44,6 @@ class MyBookingRepository {
             }
 
             override fun onCancelled(error: DatabaseError) {}
-
         }
 
         myBookingDatabaseRef.addValueEventListener(listener)
@@ -54,7 +57,8 @@ class MyBookingRepository {
         floorID: String,
         pillerID: String,
         boxID: String,
-        bookingId: String
+        bookingId: String,
+        currentUserUid: String
     ) {
         val databaseRef =
             parkingDatabaseRef.child(buildingID).child(floorID).child(pillerID).child(boxID)
@@ -66,7 +70,7 @@ class MyBookingRepository {
         val myBookingDatabaseRef =
             database.child(currentUserUid).child("myBooking").child(bookingId)
         val mapBooking: MutableMap<String, Any> = HashMap<String, Any>()
-        mapBooking["isCheckedOut"] = true
+        mapBooking["checkedOut"] = true
         myBookingDatabaseRef.updateChildren(mapBooking)
 
     }

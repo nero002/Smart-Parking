@@ -15,21 +15,7 @@ class SlotBookingDataRepository {
     private val parkingDatabaseRef = database.getReference("parking")
 
 
-    /*fun updateData(buildingID: String, pillerID: String, boxID: String, userId: String = "u5") {
-        val time = Calendar.getInstance().timeInMillis
-
-        val databaseRef = parkingDatabaseRef.child(buildingID).child(pillerID).child(boxID)
-
-        val map: MutableMap<String, Any> = HashMap<String, Any>()
-        map["available"] = false
-        map["time"] = time
-        map["user_id"] = userId
-        databaseRef.updateChildren(map)
-
-    }*/
-
-
-    private val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid ?: "u5"
+    //    private val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid ?: "u5"
     private val userDatabase = Firebase.database.getReference("users")
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -38,7 +24,7 @@ class SlotBookingDataRepository {
         floorID: String,
         pillerID: String,
         boxID: String,
-        hoursToAdd: Long = 1
+        hoursToAdd: Long = 1, currentUserUid: String
     ) {
 
         val time = Calendar.getInstance().timeInMillis
@@ -56,7 +42,6 @@ class SlotBookingDataRepository {
         databaseRef.updateChildren(map)
 
 
-
         val myBookingDatabaseRef =
             userDatabase.child(currentUserUid).child("myBooking").push()
 
@@ -67,7 +52,7 @@ class SlotBookingDataRepository {
             boxId = boxID,
             time = time,
             toTime = toTime,
-            isCheckedOut = false,
+            checkedOut = false,
             id = myBookingDatabaseRef.key
         )
         myBookingDatabaseRef.setValue(data)

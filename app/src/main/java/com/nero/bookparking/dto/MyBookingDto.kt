@@ -7,6 +7,6 @@ data class MyBookingDto(
     val boxId: String? = null,
     val time: Long? = null,
     val toTime: Long? = null,
-    val isCheckedOut: Boolean? = null,
+    val checkedOut: Boolean? = null,
     var id: String? = null
 )
