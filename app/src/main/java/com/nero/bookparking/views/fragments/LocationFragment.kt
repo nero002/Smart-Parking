@@ -4,11 +4,11 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.core.app.ActivityCompat
+import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,11 +41,14 @@ class LocationFragment : Fragment(), OnItemClickListener {
         _binding = FragmentLocationBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
 
+//        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+        setHasOptionsMenu(true)
+        activity?.actionBar?.hide()
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context)
 
         getLocation()
-
         buildData()
+
         mallItemAdapter = MallItemAdapter(mallItemList, this)
         binding.rvMallItems.apply {
             layoutManager = LinearLayoutManager(context)
@@ -126,8 +129,13 @@ class LocationFragment : Fragment(), OnItemClickListener {
                 val addressList = geocoder.getFromLocation(
                     location.latitude, location.longitude, 1
                 )
-                Toast.makeText(context, addressList[0].locality.toString(), Toast.LENGTH_SHORT)
-                    .show()
+                try {
+                    Toast.makeText(context, addressList[0].locality.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                } catch (e: Exception) {
+
+                }
+
             }
         }
     }
@@ -150,6 +158,44 @@ class LocationFragment : Fragment(), OnItemClickListener {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.search_menu, menu)
+        val searchItem = menu.findItem(R.id.action_search)
+
+        val searchView = MenuItemCompat.getActionView(searchItem) as SearchView
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchView.clearFocus()
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false;
+
+            }
+
+        })
+        return super.onCreateOptionsMenu(menu, inflater)
+    }
+
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        super.onCreateOptionsMenu(menu, inflater)
+//        inflater.inflate(R.menu.search_menu, menu)
+//    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+
+            R.id.action_search -> {
+
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 }

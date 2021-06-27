@@ -1,5 +1,6 @@
 package com.nero.bookparking.di
 
+import com.nero.bookparking.repository.MyBookingRepository
 import com.nero.bookparking.repository.ParkingDataRepository
 import com.nero.bookparking.repository.SlotBookingDataRepository
 import dagger.Module
@@ -20,6 +21,10 @@ class AppModule {
     @Provides
     fun providesSlotDataRepository(): SlotBookingDataRepository {
         return SlotBookingDataRepository()
+    }
+  @Provides
+    fun providesMyBookingRepository(): MyBookingRepository {
+        return MyBookingRepository()
     }
 
 }

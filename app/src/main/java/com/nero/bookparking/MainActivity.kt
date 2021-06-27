@@ -2,6 +2,7 @@ package com.nero.bookparking
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -101,11 +102,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .navigate(R.id.locationFragment, null, navOptions)
             }
             R.id.nav_my_bookings -> {
-                if (isValidDestination(R.id.paymentConfirmationFragment)) {
-                    Navigation.findNavController(this, R.id.fragmentContainerView2)
-                        .navigate(R.id.paymentConfirmationFragment)
+                if (isValidDestination(R.id.nav_my_bookings)) {
+                        Navigation.findNavController(this,R.id.fragmentContainerView2)
+                            .navigate(R.id.nav_my_bookings)
                 }
-
             }
             R.id.nav_payment -> {
                 if (isValidDestination(R.id.slotBookingFragment)) {
@@ -130,4 +130,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return destination != Navigation.findNavController(this, R.id.fragmentContainerView2)
             .currentDestination?.id
     }
+
+
+    fun hideToolBar() {
+
+        binding.myToolbar.visibility = View.GONE
+
+    }
+
+    fun showToolBar() {
+        binding.myToolbar.visibility = View.VISIBLE
+
+    }
+
 }

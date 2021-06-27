@@ -31,9 +31,13 @@ import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import com.nero.bookparking.MainActivity
 import com.nero.bookparking.R
 import com.nero.bookparking.dto.parkingDTO.ParkingBoxDto
 import com.nero.bookparking.dto.parkingDTO.ParkingPillarDto
+import com.nero.bookparking.helper.KEY_USER_GOOGLE_ID
+import com.nero.bookparking.helper.PreferenceHelper
+import com.nero.bookparking.repository.listenerAndDatabaseModel.ListenerAndDatabaseReference
 import com.nero.bookparking.ui.parcalable.ArgsParkingToPayment
 import com.nero.bookparking.ui.theme.Ebony
 import com.nero.bookparking.ui.theme.EbonyClay
@@ -46,6 +50,9 @@ import kotlin.math.roundToInt
 class ParkingBookingScreenFragment : Fragment() {
 
     private val viewModel by viewModels<BookingScreenViewModel>()
+    private lateinit var databaseReference: ListenerAndDatabaseReference
+
+    private lateinit var u_id: String
 
     @ExperimentalFoundationApi
     override fun onCreateView(
@@ -53,14 +60,15 @@ class ParkingBookingScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        viewModel.getParkingData("m_1")
-
         return ComposeView(requireContext()).apply {
+
+            u_id = PreferenceHelper.getStringFromPreference(KEY_USER_GOOGLE_ID)?:"u5"
+
             setContent {
 
                 val listOfPillars =
                     viewModel.listOfData.value?.parkingFloorDto?.get(viewModel.currentFloor.value)?.parkingPillarDto
-
+                val listOfFloors = viewModel.listOfData.value?.parkingFloorDto
                 Box(modifier = Modifier.background(Ebony)) {
 
                     Column {
@@ -71,10 +79,13 @@ class ParkingBookingScreenFragment : Fragment() {
 
                                 item {
                                     Spacer(modifier = Modifier.size(60.dp))
-                                    Row {
+                                    Row(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        horizontalArrangement = Arrangement.Center
+                                    ) {
                                         Spacer(modifier = Modifier.size(50.dp))
                                         Image(
-                                            painter = painterResource(id = R.drawable.back),
+                                            painter = painterResource(id = R.drawable.dots),
                                             contentDescription = "back",
                                             Modifier.height(63.dp)
                                         )
@@ -98,7 +109,7 @@ class ParkingBookingScreenFragment : Fragment() {
                                 }
 
                                 item {
-                                    val listOfFloors = viewModel.listOfData.value?.parkingFloorDto
+
                                     LazyRow(
 
                                     ) {
@@ -159,7 +170,7 @@ class ParkingBookingScreenFragment : Fragment() {
                                                         pillarName = listOfPillars[index].id,
                                                         listOfParkingBoxes = listOfPillars[index].listOfParkingBoxes,
                                                         currentSelectedId = viewModel.currentSelectede.value,
-                                                        currentUserUid = "u5",
+                                                        currentUserUid = u_id,
                                                         onClick = { slectedId, pillarId ->
                                                             viewModel.currentSelectede.value =
                                                                 slectedId
@@ -223,15 +234,19 @@ class ParkingBookingScreenFragment : Fragment() {
                                                 ArgsParkingToPayment(
                                                     pillor = viewModel.currentSelectedPillar.value,
                                                     parkingBox = viewModel.currentSelectede.value,
-                                                    building = "m_1"
-
+                                                    building = "m_1",
+                                                    floor = listOfFloors?.get(viewModel.currentFloor.value)?.id
+                                                        ?: "ff55"
                                                 )
                                             )
                                     findNavController().navigate(action)
                                 },
                             contentAlignment = Alignment.Center
                         ) {
-
+                            Image(
+                                painter = painterResource(id = R.drawable.boxback),
+                                contentDescription = ""
+                            )
                         }
                     }
 
@@ -239,6 +254,22 @@ class ParkingBookingScreenFragment : Fragment() {
             }
         }
     }
+
+
+    override fun onResume() {
+        super.onResume()
+        databaseReference = viewModel.getParkingData("m_1")
+        val activity = activity as MainActivity
+        activity.hideToolBar()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        databaseReference.database.removeEventListener(databaseReference.listener)
+        val activity = activity as MainActivity
+        activity.showToolBar()
+    }
+
 }
 
 @Composable
@@ -290,7 +321,7 @@ fun GridOfPillars(
     onClick: (String, String) -> Unit
 ) {
     var offsetX by remember { mutableStateOf(0f) }
-    var offsetY by remember { mutableStateOf(0f) }
+    val offsetY by remember { mutableStateOf(0f) }
 
     Box(modifier = Modifier
         .offset { IntOffset(offsetX.roundToInt(), offsetY.roundToInt()) }
