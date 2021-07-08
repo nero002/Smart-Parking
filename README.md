@@ -1,7 +1,7 @@
 <h1 align="center">Book Parking</h1>
 
 <p align="center">  
-Booking is a demo application based on MVVM architecture. The app allows users to booking parking slots, the app uses firebase for the backend.
+Book Parking is a demo application based on MVVM architecture. The app allows users to booking parking slots, the app uses firebase for the backend.
 </p>
 </br>
 <p align="center">
