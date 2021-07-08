@@ -1,0 +1,686 @@
+{
+  "parking" : {
+    "m_1" : {
+      "F_1" : {
+        "P_1" : {
+          "P_101" : {
+            "available" : false,
+            "time" : 100,
+            "user_id" : "u1"
+          },
+          "P_102" : {
+            "available" : false,
+            "time" : 1624747444828,
+            "user_id" : "u5"
+          },
+          "P_103" : {
+            "available" : false,
+            "time" : 1624769729767,
+            "user_id" : "u5"
+          },
+          "P_104" : {
+            "available" : false,
+            "time" : 100,
+            "user_id" : "u2"
+          },
+          "P_105" : {
+            "available" : false,
+            "time" : 1624769998133,
+            "user_id" : "u5"
+          },
+          "P_106" : {
+            "available" : false,
+            "time" : 1624771222635,
+            "user_id" : "u5"
+          }
+        },
+        "P_2" : {
+          "P_201" : {
+            "available" : false,
+            "time" : 100,
+            "user_id" : "u1"
+          },
+          "P_202" : {
+            "available" : false,
+            "time" : 1625055266399,
+            "user_id" : "100357630646651599251"
+          },
+          "P_203" : {
+            "available" : false,
+            "time" : 1624803211959,
+            "user_id" : "115702208285935605440"
+          },
+          "P_204" : {
+            "available" : false,
+            "time" : 100,
+            "user_id" : "u2"
+          },
+          "P_205" : {
+            "available" : false
+          },
+          "P_206" : {
+            "available" : true,
+            "time" : 1624776295083,
+            "user_id" : "nan"
+          }
+        },
+        "P_3" : {
+          "P_301" : {
+            "available" : false,
+            "time" : 100,
+            "user_id" : "u1"
+          },
+          "P_302" : {
+            "available" : false,
+            "time" : 1624798201904,
+            "user_id" : "u5"
+          },
+          "P_303" : {
+            "available" : false,
+            "time" : 1624774076055
+          },
+          "P_304" : {
+            "available" : false,
+            "time" : 100,
+            "user_id" : "u2"
+          },
+          "P_305" : {
+            "available" : true,
+            "time" : 1625741746302,
+            "user_id" : "nan"
+          },
+          "P_306" : {
+            "available" : true,
+            "time" : 1624808568429,
+            "user_id" : "nan"
+          }
+        },
+        "P_4" : {
+          "P_401" : {
+            "available" : false,
+            "time" : 100,
+            "user_id" : "u1"
+          },
+          "P_402" : {
+            "available" : false,
+            "time" : 1624775536316
+          },
+          "P_403" : {
+            "available" : true,
+            "time" : 1624785808877,
+            "user_id" : "nan"
+          },
+          "P_404" : {
+            "available" : false,
+            "time" : 100,
+            "user_id" : "u2"
+          },
+          "P_405" : {
+            "available" : true,
+            "time" : 1624776677853,
+            "user_id" : "nan"
+          },
+          "P_406" : {
+            "available" : true
+          }
+        }
+      }
+    }
+  },
+  "users" : {
+    "100357630646651599251" : {
+      "email" : "dhiraj02gupta@gmail.com",
+      "image_url" : "https://lh3.googleusercontent.com/a-/AOh14Gi7g4LHQhCJbs3DWL0ZAUfOnvRp5F1mJ9hzaC_gv50",
+      "myBooking" : {
+        "-MdBsWhMqetUilETEWhP" : {
+          "boxId" : "P_202",
+          "checkedOut" : true,
+          "floorId" : "F_1",
+          "id" : "-MdBsWhMqetUilETEWhP",
+          "mallId" : "m_1",
+          "pillarId" : "P_2",
+          "time" : 1624787526253,
+          "toTime" : 1624812726253
+        },
+        "-MdBszr6WQaUROdmb9Qt" : {
+          "boxId" : "P_202",
+          "checkedOut" : true,
+          "floorId" : "F_1",
+          "id" : "-MdBszr6WQaUROdmb9Qt",
+          "mallId" : "m_1",
+          "pillarId" : "P_2",
+          "time" : 1624787649765,
+          "toTime" : 1624812849765
+        },
+        "-MdC1sDWSuDC3ncKkyaP" : {
+          "boxId" : "P_203",
+          "checkedOut" : true,
+          "floorId" : "F_1",
+          "id" : "-MdC1sDWSuDC3ncKkyaP",
+          "mallId" : "m_1",
+          "pillarId" : "P_2",
+          "time" : 1624790239950,
+          "toTime" : 1624815439950
+        },
+        "-MdD7L9bTnLAgVqMDEx3" : {
+          "boxId" : "P_202",
+          "checkedOut" : true,
+          "floorId" : "F_1",
+          "id" : "-MdD7L9bTnLAgVqMDEx3",
+          "mallId" : "m_1",
+          "pillarId" : "P_2",
+          "time" : 1624808450470,
+          "toTime" : 1624812050470
+        },
+        "-MdD7mu6qwYQbMxXdEC_" : {
+          "boxId" : "P_306",
+          "checkedOut" : true,
+          "floorId" : "F_1",
+          "id" : "-MdD7mu6qwYQbMxXdEC_",
+          "mallId" : "m_1",
+          "pillarId" : "P_3",
+          "time" : 1624808568429,
+          "toTime" : 1624819368429
+        },
+        "-MdRpsBejxiOpd5flLgL" : {
+          "boxId" : "P_202",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdRpsBejxiOpd5flLgL",
+          "mallId" : "m_1",
+          "pillarId" : "P_2",
+          "time" : 1625055266399,
+          "toTime" : 1625080466399
+        }
+      },
+      "name" : "Dheeraj Gupta",
+      "token" : "chjrPMlfTXO8mAvwK3mPC2:APA91bEjINgM5O0eIORqkAwptWYHcRP8R-opqdwK3W_257HXLoIMqjS7GKygNCzSmKTkrZqqbsQothfW6tgYqJRGVym9px2kPDn9gOw_v_wNnegX7djrWTKAZq84R6XuD6H857XcfzTJ",
+      "username" : ""
+    },
+    "101852411052973888896" : {
+      "email" : "karthikm607@gmail.com",
+      "image_url" : "https://lh3.googleusercontent.com/a-/AOh14GhcqD3vjceIH_kToSS2XbMRMbAveIFlKElUWwbRPw",
+      "myBooking" : {
+        "-Me4jyygLP1IfTDRCD2I" : {
+          "boxId" : "P_305",
+          "checkedOut" : true,
+          "floorId" : "F_1",
+          "id" : "-Me4jyygLP1IfTDRCD2I",
+          "mallId" : "m_1",
+          "pillarId" : "P_3",
+          "time" : 1625741585784,
+          "toTime" : 1625766785784
+        },
+        "-Me4ka2-29fy-eXIF1F4" : {
+          "boxId" : "P_305",
+          "checkedOut" : true,
+          "floorId" : "F_1",
+          "id" : "-Me4ka2-29fy-eXIF1F4",
+          "mallId" : "m_1",
+          "pillarId" : "P_3",
+          "time" : 1625741746302,
+          "toTime" : 1625766946302
+        }
+      },
+      "name" : "Spidergod 607",
+      "token" : "dj3B0dtiQJ-DEeA3aZhTA8:APA91bHOqsIiobSGmhqKPa26vt_hocIB5T4ptIx60INOb6eq3gRhoHoiXq7ugNgIzQQ8om8UA52MCXOdUXAPTUBrf4KrtrEoOFOp5PBS6TJNYfPM7HIaXrJhAQjJqptAAhkOZSoMtrnE",
+      "username" : ""
+    },
+    "115702208285935605440" : {
+      "email" : "chaitanyagcg.01@gmail.com",
+      "image_url" : "https://lh3.googleusercontent.com/a-/AOh14Gi7ct4F_uMAEXddHGx-OhS6wlxwpwUXZ4YM_ErUHoM",
+      "myBooking" : {
+        "-MdChLnOsHy0BpsbHYNU" : {
+          "boxId" : "P_305",
+          "checkedOut" : true,
+          "floorId" : "F_1",
+          "id" : "-MdChLnOsHy0BpsbHYNU",
+          "mallId" : "m_1",
+          "pillarId" : "P_3",
+          "time" : 1624801372319,
+          "toTime" : 1624815772319
+        },
+        "-MdCoMvxMg4zYIXIkSvo" : {
+          "boxId" : "P_203",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdCoMvxMg4zYIXIkSvo",
+          "mallId" : "m_1",
+          "pillarId" : "P_2",
+          "time" : 1624803211959,
+          "toTime" : 1624817611959
+        }
+      },
+      "name" : "Chaithanya Gollapalli",
+      "token" : "cGRemV96TCiXFSXtpZvWMT:APA91bHr-VhiK3xHQcPvc7_MGzumH0G79fQa5yPZHLJpZXEwilXCt-2jCclrIlYYyLxmMO5mGT2vQnVvi3aW53zA3eYxxJHcJc0x15ZrNCOcGHcUki3muGRLdAwOBqkVyy4mgvm-IRdZ",
+      "username" : ""
+    },
+    "u5" : {
+      "myBooking" : {
+        "-Md9Z91lavFXj1bjgybV" : {
+          "boxId" : "P_106",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-Md9Z91lavFXj1bjgybV",
+          "isCheckedOut" : true,
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624748628232,
+          "toTime" : 1624752228232
+        },
+        "-MdAXf9KlrBYsKpgsLfp" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXf9KlrBYsKpgsLfp",
+          "isCheckedOut" : true,
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765017716,
+          "toTime" : 1624768617716
+        },
+        "-MdAXfbfQzIboUqbnYPD" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXfbfQzIboUqbnYPD",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765019595,
+          "toTime" : 1624768619595
+        },
+        "-MdAXfkd1as6xAiPwGuG" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXfkd1as6xAiPwGuG",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765020168,
+          "toTime" : 1624768620168
+        },
+        "-MdAXfo8IUHwu_YQ8vkQ" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXfo8IUHwu_YQ8vkQ",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765020393,
+          "toTime" : 1624768620393
+        },
+        "-MdAXfsKUE323otYcq6R" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXfsKUE323otYcq6R",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765020660,
+          "toTime" : 1624768620660
+        },
+        "-MdAXfwSDctPnYdUPDLo" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXfwSDctPnYdUPDLo",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765020925,
+          "toTime" : 1624768620925
+        },
+        "-MdAXfzelMhbEmQKkadR" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXfzelMhbEmQKkadR",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765021130,
+          "toTime" : 1624768621130
+        },
+        "-MdAXg2ZFm6V6WywLuxX" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXg2ZFm6V6WywLuxX",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765021380,
+          "toTime" : 1624768621380
+        },
+        "-MdAXg5eSD3iehaPghm9" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXg5eSD3iehaPghm9",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765021578,
+          "toTime" : 1624768621578
+        },
+        "-MdAXgECQW-AaauJpz-A" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXgECQW-AaauJpz-A",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765022126,
+          "toTime" : 1624768622126
+        },
+        "-MdAXgHAW0bKgN1boBGo" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXgHAW0bKgN1boBGo",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765022315,
+          "toTime" : 1624768622315
+        },
+        "-MdAXgPDsdU9ZrmpFDGN" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXgPDsdU9ZrmpFDGN",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765022830,
+          "toTime" : 1624768622830
+        },
+        "-MdAXgTNztQfHWWOAM7L" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXgTNztQfHWWOAM7L",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765023097,
+          "toTime" : 1624768623097
+        },
+        "-MdAXgXv-gIbQPoXEmFg" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXgXv-gIbQPoXEmFg",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765023387,
+          "toTime" : 1624768623387
+        },
+        "-MdAXgaITxZPzw8L36Yj" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXgaITxZPzw8L36Yj",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765023604,
+          "toTime" : 1624768623604
+        },
+        "-MdAXgdDlZqGsWaRLYG8" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXgdDlZqGsWaRLYG8",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765023791,
+          "toTime" : 1624768623791
+        },
+        "-MdAXgjw_AVf9VFKm-xP" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXgjw_AVf9VFKm-xP",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765024220,
+          "toTime" : 1624768624220
+        },
+        "-MdAXgnoGQqQfrFaw1Bi" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXgnoGQqQfrFaw1Bi",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765024468,
+          "toTime" : 1624768624468
+        },
+        "-MdAXgqlkIlZskC6zwbA" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXgqlkIlZskC6zwbA",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765024657,
+          "toTime" : 1624768624657
+        },
+        "-MdAXgvzjinVmuptdZC7" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXgvzjinVmuptdZC7",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765024992,
+          "toTime" : 1624768624992
+        },
+        "-MdAXgyfjnJsTwX2taBB" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXgyfjnJsTwX2taBB",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765025164,
+          "toTime" : 1624768625164
+        },
+        "-MdAXh0Lv-4iVi2kxjKr" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXh0Lv-4iVi2kxjKr",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765025335,
+          "toTime" : 1624768625335
+        },
+        "-MdAXh5yh0lvjkr35K0Q" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXh5yh0lvjkr35K0Q",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765025695,
+          "toTime" : 1624768625695
+        },
+        "-MdAXh9UhlkYnFzInzbJ" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXh9UhlkYnFzInzbJ",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765025919,
+          "toTime" : 1624768625919
+        },
+        "-MdAXhBlXFpTSRBMFTa7" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXhBlXFpTSRBMFTa7",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765026065,
+          "toTime" : 1624768626065
+        },
+        "-MdAXhEgSon06N82-jkK" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXhEgSon06N82-jkK",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765026253,
+          "toTime" : 1624768626253
+        },
+        "-MdAXhGhOEvc0FspZUXw" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXhGhOEvc0FspZUXw",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765026382,
+          "toTime" : 1624768626382
+        },
+        "-MdAXhJf3Xl-mFbujxgj" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXhJf3Xl-mFbujxgj",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765026571,
+          "toTime" : 1624768626571
+        },
+        "-MdAXhR_bnP5K230-TH-" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXhR_bnP5K230-TH-",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765027077,
+          "toTime" : 1624768627077
+        },
+        "-MdAXhVTDR77F-4Pz2AW" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXhVTDR77F-4Pz2AW",
+          "isCheckedOut" : true,
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765027327,
+          "toTime" : 1624768627327
+        },
+        "-MdAXhXJezmlKJctqlFI" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAXhXJezmlKJctqlFI",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765027445,
+          "toTime" : 1624768627445
+        },
+        "-MdAZLTaZo_866j__rE-" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAZLTaZo_866j__rE-",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624765457246,
+          "toTime" : 1624769057246
+        },
+        "-MdAamJk4Rvz1dr_Kp_h" : {
+          "boxId" : "",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAamJk4Rvz1dr_Kp_h",
+          "mallId" : "m_1",
+          "pillarId" : "",
+          "time" : 1624766095603,
+          "toTime" : 1624769695603
+        },
+        "-MdAb-QYVo7mm23259sV" : {
+          "boxId" : "",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAb-QYVo7mm23259sV",
+          "mallId" : "m_1",
+          "pillarId" : "",
+          "time" : 1624766153387,
+          "toTime" : 1624769753387
+        },
+        "-MdAcl4uphx_zzyQYIrI" : {
+          "boxId" : "",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAcl4uphx_zzyQYIrI",
+          "mallId" : "m_1",
+          "pillarId" : "",
+          "time" : 1624766614848,
+          "toTime" : 1624770214848
+        },
+        "-MdAmlT6jpIyYpu8VKjc" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAmlT6jpIyYpu8VKjc",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624769237823,
+          "toTime" : 1624772837823
+        },
+        "-MdAodZlB26mB0Rm6CEE" : {
+          "boxId" : "P_103",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAodZlB26mB0Rm6CEE",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624769729767,
+          "toTime" : 1624773329767
+        },
+        "-MdApf4wvMW9D2syacf2" : {
+          "boxId" : "P_105",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdApf4wvMW9D2syacf2",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624769998133,
+          "toTime" : 1624773598133
+        },
+        "-MdAuL2AUn59dibtgj71" : {
+          "boxId" : "P_106",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdAuL2AUn59dibtgj71",
+          "mallId" : "m_1",
+          "pillarId" : "P_1",
+          "time" : 1624771222635,
+          "toTime" : 1624774822635
+        },
+        "-MdCWFWsTSroANMt6TmB" : {
+          "boxId" : "P_302",
+          "checkedOut" : false,
+          "floorId" : "F_1",
+          "id" : "-MdCWFWsTSroANMt6TmB",
+          "mallId" : "m_1",
+          "pillarId" : "P_3",
+          "time" : 1624798201904,
+          "toTime" : 1624801801904
+        },
+        "bookingId1" : {
+          "boxId" : "b2",
+          "floorId" : "f1",
+          "id" : "bookingId1",
+          "isCheckedOut" : true,
+          "mallId" : "mm2",
+          "pillarId" : "p1",
+          "time" : 1624714381000,
+          "toTime" : 1624728781000
+        }
+      }
+    }
+  }
+}
