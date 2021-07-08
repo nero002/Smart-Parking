@@ -48,3 +48,4 @@ Book Parking is based on MVVM architecture and repository pattern.
 2. Copy the google-services.json file you just downloaded into the app/ or mobile/ directory of your Android Studio project.
 3. Select the Auth panel and then click the Sign In Method tab.
 4. Click Google and turn on the Enable switch, then click Save
+5. Import [this](/screenshots/book_parking_export.json) file into your firebase real time database.
