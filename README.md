@@ -39,5 +39,12 @@ Go to the [Releases](https://github.com/nero002/Book-Parking/releases) to downlo
 </br>
 
 ## Architecture
-Book Parking is based on MVVM architecture and a repository pattern.
+Book Parking is based on MVVM architecture and repository pattern.
 ![architecture](/screenshots/architecture.png)
+
+## Getting Started
+
+1. [Add Firebase to your Android Project.](https://firebase.google.com/docs/android/setup)
+2. Copy the google-services.json file you just downloaded into the app/ or mobile/ directory of your Android Studio project.
+3. Select the Auth panel and then click the Sign In Method tab.
+4. Click Google and turn on the Enable switch, then click Save
