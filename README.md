@@ -24,7 +24,7 @@ Go to the [Releases](https://github.com/nero002/Book-Parking/releases) to downlo
 - Architecture
   - MVVM Architecture (View - ViewBinding - ViewModel - Model)
   - Repository pattern
-- [Glide](https://github.com/bumptech/glide), [GlidePalette](https://github.com/florent37/GlidePalette) - loading images.
+- [Glide](https://github.com/bumptech/glide) - loading images.
 - [Lottie](https://github.com/airbnb/lottie-android) - for animations.
 - [Folding cell](https://github.com/Ramotion/folding-cell) - expanding content cell with paper like animation.
 </br>
