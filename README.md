@@ -50,4 +50,5 @@ Book Parking is based on MVVM architecture and repository pattern.
 4. Click Google and turn on the Enable switch, then click Save
 5. Import [this](/screenshots/book_parking_export.json) file into your firebase real time database.
 
-## Watch full [Demo](https://youtu.be/xXWviLTXARg)
+## Demo Video 
+You can watch the full demo on [YouTube](https://youtu.be/xXWviLTXARg)
