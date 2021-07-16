@@ -144,7 +144,11 @@ fun Ticket(
 
 
         Column(modifier = Modifier.shadow(5.dp)) {
-            Row(modifier = Modifier.clickable { onClick(index) }) {
+            Row(modifier = Modifier.clickable {
+                if(!isCheckOut){
+                    onClick(index)
+                }
+            }) {
                 Box(
                     modifier = Modifier
                         .height(157.dp)
@@ -228,7 +232,10 @@ fun Ticket(
                             .width(100.dp)
                             .height(36.dp)
                             .clickable {
-                                checkOutOnClick(index)
+                                if(!isCheckOut){
+                                    checkOutOnClick(index)
+                                }
+
                             }
                     ) {
                         Box(
@@ -283,23 +290,3 @@ fun DateSHow(
     }
 
 }
-
-
-//@Composable
-//@Preview
-//fun Test() {
-//    Ticket(
-//        time = "sfd",
-//        spot = "sfd",
-//        timeLeft = "sfd",
-//        day = "sfd",
-//        month = "sfd",
-//        year = "sfd",
-//        showCheckOut = false,
-//
-//        {},
-//        1,
-//        {}, {}
-//    )
-//
-//}

@@ -62,7 +62,7 @@ class ParkingBookingScreenFragment : Fragment() {
 
         return ComposeView(requireContext()).apply {
 
-            u_id = PreferenceHelper.getStringFromPreference(KEY_USER_GOOGLE_ID)?:"u5"
+            u_id = PreferenceHelper.getStringFromPreference(KEY_USER_GOOGLE_ID) ?: "u5"
 
             setContent {
 
@@ -228,18 +228,23 @@ class ParkingBookingScreenFragment : Fragment() {
                                 .clip(RoundedCornerShape(17.dp))
                                 .background(Color.White)
                                 .clickable {
-                                    val action =
-                                        ParkingBookingScreenFragmentDirections
-                                            .actionParkingBookingScreenFragmentToSlotBookingFragment(
-                                                ArgsParkingToPayment(
-                                                    pillor = viewModel.currentSelectedPillar.value,
-                                                    parkingBox = viewModel.currentSelectede.value,
-                                                    building = "m_1",
-                                                    floor = listOfFloors?.get(viewModel.currentFloor.value)?.id
-                                                        ?: "ff55"
+
+                                    if (viewModel.currentSelectedPillar.value.isNotEmpty() && viewModel.currentSelectede.value.isNotEmpty()) {
+                                        val action =
+                                            ParkingBookingScreenFragmentDirections
+                                                .actionParkingBookingScreenFragmentToSlotBookingFragment(
+                                                    ArgsParkingToPayment(
+                                                        pillor = viewModel.currentSelectedPillar.value,
+                                                        parkingBox = viewModel.currentSelectede.value,
+                                                        building = "m_1",
+                                                        floor = listOfFloors?.get(viewModel.currentFloor.value)?.id
+                                                            ?: "ff55"
+                                                    )
                                                 )
-                                            )
-                                    findNavController().navigate(action)
+                                        findNavController().navigate(action)
+                                    }
+
+
                                 },
                             contentAlignment = Alignment.Center
                         ) {
@@ -492,7 +497,8 @@ fun LeftCapableBox(
         parkingBoxId = data.id ?: "nan",
         boxBackgroundColor = if (currentUserUid == data.user_id) Color.Green else if (currentSelectedId == data.id && data.available == true) SelectedRed else Ebony,
         onClick = onClick,
-        pillarID = pillarID
+        pillarID = pillarID,
+        available = data.available == true
     )
 
 
@@ -505,7 +511,6 @@ fun RightCapableBox(
     currentSelectedId: String,
     currentUserUid: String,
     onClick: (String, String) -> Unit,
-
     pillarID: String
 ) {
 
@@ -517,7 +522,8 @@ fun RightCapableBox(
         parkingBoxId = data.id ?: "nan",
         boxBackgroundColor = if (currentUserUid == data.user_id) Color.Green else if (currentSelectedId == data.id && data.available == true) SelectedRed else Ebony,
         onClick = onClick,
-        pillarID = pillarID
+        pillarID = pillarID,
+        available = data.available == true
     )
 
 
@@ -530,7 +536,8 @@ fun ParkingBoxRight(
     parkingBoxId: String,
     boxBackgroundColor: androidx.compose.ui.graphics.Color,
     onClick: (String, String) -> Unit,
-    pillarID: String
+    pillarID: String,
+    available: Boolean
 ) {
     Row {
         Box(
@@ -546,7 +553,9 @@ fun ParkingBoxRight(
                     .height(59.dp)
                     .width(90.dp)
                     .clickable {
-                        onClick(parkingBoxId, pillarID)
+                        if (available) {
+                            onClick(parkingBoxId, pillarID)
+                        }
                     }
             ) {
                 Row(modifier = Modifier.fillMaxSize()) {
@@ -593,7 +602,8 @@ fun ParkingBoxLeft(
     parkingBoxId: String,
     boxBackgroundColor: androidx.compose.ui.graphics.Color,
     onClick: (String, String) -> Unit,
-    pillarID: String
+    pillarID: String,
+    available: Boolean
 ) {
 
     Column() {
@@ -605,7 +615,9 @@ fun ParkingBoxLeft(
                 .height(59.dp)
                 .width(90.dp)
                 .clickable {
-                    onClick(parkingBoxId, pillarID)
+                    if (available) {
+                        onClick(parkingBoxId, pillarID)
+                    }
                 }
         ) {
 
